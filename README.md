@@ -17,6 +17,8 @@ Type in your Bing account's username/password. One account per line.
 
 EXAMPLE:
 
+```
 MyUsernameIsThis/ThisIsMyPassword
 SecondAccount/SecondPassword
 ThirdAcc/ThirdPass
+```
