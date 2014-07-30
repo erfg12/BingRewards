@@ -41,8 +41,6 @@ namespace WindowsFormsApplication1
                 clearCookies();
                 timer1.Enabled = true;
                 string content = File.ReadLines("accounts.txt").ElementAt(line);
-                //if (content.Contains("/") == false)
-                //    return; //done!
                 string[] words = content.Split('/');
                 username = words[0];
                 password = words[1];
@@ -90,20 +88,18 @@ namespace WindowsFormsApplication1
                 }
             }
 
-            //if (webBrowser1.Url.ToString().Contains(@"bing.com/Passport") || webBrowser1.Url.ToString().Contains(@"bing.com/secure") || webBrowser1.Url.ToString().Contains(@"live.com"))
-           //     return; //if we skip to a search, but are not completely logged in yet.
-
-            countDown = countDown - 1;
+            if (webBrowser1.Url.ToString().Contains(@"?q="))
+                countDown = countDown - 1;
 
             if (mobile)
             {
-                webBrowser1.Navigate("http://bing.com/?q=" + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+                webBrowser1.Navigate("http://bing.com/search?q=" + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
                 if (countDown == 0) //We're on our last search. Reset to desktop.
                     mobile = false;
             }
             else
             {
-                webBrowser1.Navigate(new Uri("http://bing.com/?q=" + query));
+                webBrowser1.Navigate(new Uri("http://bing.com/search?q=" + query));
                 if (countDown == 0) //Change to mobile when done with desktop searching.
                 {
                     mobile = true;
