@@ -39,7 +39,9 @@
             this.accountBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.notesBox = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.startTimer = new System.Windows.Forms.Timer(this.components);
+            this.searchTimer = new System.Windows.Forms.Timer(this.components);
+            this.startBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -120,16 +122,34 @@
                 "itself. The search results will come up with 0 results most of the time. Ignore " +
                 "this, this still counts as a search.";
             // 
-            // timer1
+            // startTimer
             // 
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.startTimer.Interval = 5000;
+            this.startTimer.Tick += new System.EventHandler(this.startTimer_Tick);
+            // 
+            // searchTimer
+            // 
+            this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
+            // 
+            // startBtn
+            // 
+            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.ForeColor = System.Drawing.Color.ForestGreen;
+            this.startBtn.Location = new System.Drawing.Point(228, 53);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(75, 23);
+            this.startBtn.TabIndex = 11;
+            this.startBtn.Text = "START";
+            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Visible = false;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 556);
+            this.Controls.Add(this.startBtn);
             this.Controls.Add(this.notesBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.accountBox);
@@ -160,7 +180,9 @@
         private System.Windows.Forms.TextBox accountBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox notesBox;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer startTimer;
+        private System.Windows.Forms.Timer searchTimer;
+        private System.Windows.Forms.Button startBtn;
     }
 }
 

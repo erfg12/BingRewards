@@ -8,17 +8,10 @@ http://newagesoldier.com
 Developed in vs.net 2010 using C#
 
 
-
 HOW TO USE
 ==========
-Create a text file called accounts.txt in the same directory as the executable file.
+Modify accounts.txt to your Windows Live accounts.
 
-Type in your Bing account's username/password. One account per line.
+You can also change words.txt to whatever random words you want generated to search by.
 
-EXAMPLE:
-
-```
-MyUsernameIsThis/ThisIsMyPassword
-SecondAccount/SecondPassword
-ThirdAcc/ThirdPass
-```
+settings.ini has adjustable search speeds.
