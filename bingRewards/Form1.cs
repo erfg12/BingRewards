@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
         private const int INTERNET_OPTION_END_BROWSER_SESSION = 42;
         private string settingsFile = Application.StartupPath + @"\settings.ini";
         private string wordsFile = Application.StartupPath + @"\words.txt";
+        private string accountsFile = Application.StartupPath + @"\accounts.txt";
 
         [DllImport("wininet.dll", SetLastError = true)]
         private static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
@@ -40,29 +41,41 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            searchTimer.Enabled = false;
+            startTimer.Enabled = false;
             webBrowser1.ScriptErrorsSuppressed = true;
-            fileExists(settingsFile);
-            fileExists(wordsFile);
-            if (Convert.ToInt32(ReadSettings("settings", "startspeed")) > 100)
+            fileCheck();
+            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "startspeed")) > 100)
                 startTimer.Interval = Convert.ToInt32(ReadSettings("settings", "startspeed"));
             else
                 startTimer.Interval = 100;
-            if (Convert.ToInt32(ReadSettings("settings", "searchspeed")) > 100)
+            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "searchspeed")) > 100)
                 searchTimer.Interval = Convert.ToInt32(ReadSettings("settings", "searchspeed"));
             else
                 searchTimer.Interval = 100;
-            if (Convert.ToInt32(ReadSettings("settings", "autostart")) >= 1)
+            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "autostart")) >= 1)
                 ReadAccounts(accountNum);
-            else
-                startBtn.Visible = true;
-            if (Convert.ToInt32(ReadSettings("settings", "hidebrowser")) >= 1)
+            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "hidebrowser")) >= 1)
                 webBrowser1.Visible = false;
+            //MessageBox.Show("DEBUG: searchspeed=" + searchTimer.Interval.ToString() + " startspeed=" + startTimer.Interval.ToString());
         }
 
-        public void fileExists(string fileName)
+        public bool fileExists(string fileName)
         {
             if (!File.Exists(fileName))
-                MessageBox.Show("File " + fileName + " is missing!");
+                return false;
+            else
+                return true;
+        }
+
+        public void fileCheck()
+        {
+            if (!fileExists(settingsFile))
+                MessageBox.Show("File " + settingsFile + " is missing!");
+            if (!fileExists(accountsFile))
+                MessageBox.Show("File " + accountsFile + " is missing!");
+            if (!fileExists(wordsFile))
+                MessageBox.Show("File " + wordsFile + " is missing!");
         }
 
         public string ReadSettings(string section, string key)
@@ -76,7 +89,7 @@ namespace WindowsFormsApplication1
         private int randomNumber()
         {
             Random random = new Random();
-            return random.Next(1, 5);
+            return random.Next(1, 4);
         }
 
         public string GetRandomSentence(int wordCount)
@@ -108,33 +121,28 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                clearCookies();
-                string content = File.ReadLines("accounts.txt").ElementAt(line);
+                //clearCookies();
+                string content = File.ReadLines(accountsFile).ElementAt(line);
                 string[] words = content.Split('/');
-                startTimer.Enabled = true;
+                startBtn.Enabled = false;
                 username = words[0];
                 password = words[1];
-                webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
+                webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
                 return;
             }
             catch
             {
                 startTimer.Enabled = false;
-                webBrowser1.Navigate(new Uri("http://newagesoldier.com/about"));
+                startBtn.Enabled = true;
+                webBrowser1.Navigate(new Uri("http://newagesoldier.com/myfiles/donations.html"));
+                if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "autoclose")) >= 1)
+                    closeTimer.Enabled = true;
                 return;
             }
         }
 
-        /*private static string random(int Size)
-        {
-            Random rnd = new Random();
-            string input = "abcdefghijklmnopqrstuvwxyz0123456789";
-            var chars = Enumerable.Range(0, Size).Select(x => input[rnd.Next(0, input.Length)]);
-            return new string(chars.ToArray());
-        }*/
-
         private void clearCookies()
-        { //is this necessary?
+        {
             string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
             foreach (string currentFile in theCookies)
                 System.IO.File.Delete(currentFile);
@@ -143,16 +151,10 @@ namespace WindowsFormsApplication1
 
         private void search(Boolean skip = false)
         {
-            string query = GetRandomSentence(randomNumber()); //random(55);
+            string query = GetRandomSentence(randomNumber());
 
             if (webBrowser1.Url.ToString().Contains(@"newagesoldier.com"))
                 return;
-
-            if (webBrowser1.Url.ToString().Contains(@"about:blank"))
-            {
-                webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
-                return;
-            }
 
             if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
             {
@@ -178,15 +180,20 @@ namespace WindowsFormsApplication1
                 if (countDown == 0) //Change to mobile when done with desktop searching.
                 {
                     mobile = true;
-                    countDown = 21;
+                    countDown = Convert.ToInt32(ReadSettings("settings", "mobilesearches")) + 1;
                 }
             }
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (webBrowser1.Url.ToString().Contains(@"newagesoldier.com"))
+            if (webBrowser1.Url.ToString() == "about:blank" || webBrowser1.Url.ToString() == "" || webBrowser1.Url == null || webBrowser1.Url.ToString().Contains(@"newagesoldier.com"))
                 return;
+
+            if (webBrowser1.Url.ToString().Contains(@"msn.com"))
+            {
+                webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
+            }
 
             if (mobile)
                 searchModeBox.Text = "mobile";
@@ -196,7 +203,9 @@ namespace WindowsFormsApplication1
             searchesLeftBox.Text = countDown.ToString();
             accountBox.Text = username;
 
-            if (webBrowser1.Url.ToString().Contains(@"login.live.com"))
+            notesBox.Text = webBrowser1.Url.ToString();
+
+            if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
             {
                 foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
                 {
@@ -210,8 +219,14 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            if (webBrowser1.Url.ToString().Contains(@"bing.com/Passport") || webBrowser1.Url.ToString().Contains(@"bing.com/secure") || webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+            if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+                startTimer.Enabled = true;
+
+            if (webBrowser1.Url.ToString().Contains(@"bing.com/Passport") || webBrowser1.Url.ToString().Contains(@"login.live.com/gls") || webBrowser1.Url.ToString().Contains(@"login.live.com/logout") || webBrowser1.Url.ToString().Contains(@"bing.com/secure") || webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard") || webBrowser1.Url.ToString().Contains(@"msn.com"))
                 return; //let timer finish the login process before reading another account OR going to the next search.
+
+            if (!webBrowser1.Url.ToString().Contains(@"?q="))
+                return;
 
             if (countDown >= 1)
                 searchTimer.Enabled = true;
@@ -221,7 +236,9 @@ namespace WindowsFormsApplication1
 
         private void startTimer_Tick(object sender, EventArgs e)
         { //this is just so we can debug and watch to make sure we are really logged in.
-            countDown = 31;
+            if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+                return;
+            countDown = (Convert.ToInt32(ReadSettings("settings", "desktopsearches")) + 1);
             startTimer.Enabled = false;
             search(true);
             accountNum = accountNum + 1; //next account
@@ -229,6 +246,8 @@ namespace WindowsFormsApplication1
 
         private void searchTimer_Tick(object sender, EventArgs e)
         {
+            if (!webBrowser1.Url.ToString().Contains(@"?q="))
+                return;
             search();
             searchTimer.Enabled = false;
         }
@@ -236,6 +255,16 @@ namespace WindowsFormsApplication1
         private void startBtn_Click(object sender, EventArgs e)
         {
             ReadAccounts(accountNum);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.newagesoldier.com");
+        }
+
+        private void closeTimer_Tick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

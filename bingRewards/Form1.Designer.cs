@@ -38,10 +38,12 @@
             this.accountLabel = new System.Windows.Forms.Label();
             this.accountBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.notesBox = new System.Windows.Forms.TextBox();
             this.startTimer = new System.Windows.Forms.Timer(this.components);
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
             this.startBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.notesBox = new System.Windows.Forms.TextBox();
+            this.closeTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -49,7 +51,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(2, 96);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(694, 458);
+            this.webBrowser1.Size = new System.Drawing.Size(844, 458);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -105,50 +107,69 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 13);
+            this.label3.Location = new System.Drawing.Point(254, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "NOTES";
-            // 
-            // notesBox
-            // 
-            this.notesBox.Location = new System.Drawing.Point(329, 9);
-            this.notesBox.Multiline = true;
-            this.notesBox.Name = "notesBox";
-            this.notesBox.Size = new System.Drawing.Size(353, 67);
-            this.notesBox.TabIndex = 10;
-            this.notesBox.Text = "If you see windows login page, do not fill it in or login. The system will login " +
-                "itself. The search results will come up with 0 results most of the time. Ignore " +
-                "this, this still counts as a search.";
+            this.label3.Text = "Address";
             // 
             // startTimer
             // 
-            this.startTimer.Interval = 5000;
+            this.startTimer.Interval = 50000;
             this.startTimer.Tick += new System.EventHandler(this.startTimer_Tick);
             // 
             // searchTimer
             // 
+            this.searchTimer.Interval = 50000;
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
             // 
             // startBtn
             // 
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.ForeColor = System.Drawing.Color.ForestGreen;
-            this.startBtn.Location = new System.Drawing.Point(228, 53);
+            this.startBtn.Location = new System.Drawing.Point(767, 57);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 11;
             this.startBtn.Text = "START";
             this.startBtn.UseVisualStyleBackColor = true;
-            this.startBtn.Visible = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label4.Location = new System.Drawing.Point(742, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "NewAgeSoldier.com";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // notesBox
+            // 
+            this.notesBox.Location = new System.Drawing.Point(301, 9);
+            this.notesBox.Multiline = true;
+            this.notesBox.Name = "notesBox";
+            this.notesBox.Size = new System.Drawing.Size(541, 21);
+            this.notesBox.TabIndex = 10;
+            this.notesBox.Text = "If you see windows login page, do not fill it in or login. The system will login " +
+                "itself. The search results will come up with 0 results most of the time. Ignore " +
+                "this, this still counts as a search.";
+            // 
+            // closeTimer
+            // 
+            this.closeTimer.Interval = 30000;
+            this.closeTimer.Tick += new System.EventHandler(this.closeTimer_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 556);
+            this.ClientSize = new System.Drawing.Size(846, 556);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.notesBox);
             this.Controls.Add(this.label3);
@@ -179,10 +200,12 @@
         private System.Windows.Forms.Label accountLabel;
         private System.Windows.Forms.TextBox accountBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox notesBox;
         private System.Windows.Forms.Timer startTimer;
         private System.Windows.Forms.Timer searchTimer;
         private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox notesBox;
+        private System.Windows.Forms.Timer closeTimer;
     }
 }
 
