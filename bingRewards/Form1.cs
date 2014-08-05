@@ -41,6 +41,8 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Convert.ToInt32(ReadSettings("settings", "startminimized")) >= 1)
+                this.WindowState = FormWindowState.Minimized;
             searchTimer.Enabled = false;
             startTimer.Enabled = false;
             webBrowser1.ScriptErrorsSuppressed = true;
@@ -89,7 +91,7 @@ namespace WindowsFormsApplication1
         private int randomNumber()
         {
             Random random = new Random();
-            return random.Next(1, 4);
+            return random.Next(3, 6);
         }
 
         public string GetRandomSentence(int wordCount)
@@ -108,7 +110,7 @@ namespace WindowsFormsApplication1
             string sentence = builder.ToString().Trim();
 
             // Set the first letter of the first word in the sentenece to uppercase
-            if (wordCount >= 3)
+            if (wordCount >= 4)
                 sentence = char.ToUpper(sentence[0]) + sentence.Substring(1) + ".";
 
             builder = new StringBuilder();
@@ -165,24 +167,26 @@ namespace WindowsFormsApplication1
                 }
             }
 
-            if (webBrowser1.Url.ToString().Contains(@"?q="))
-                countDown = countDown - 1;
+            if (!mobile)
+            {
+                if (countDown == 1) //Change to mobile when done with desktop searching.
+                {
+                    mobile = true;
+                    countDown = Convert.ToInt32(ReadSettings("settings", "mobilesearches"));
+                }
+            }
 
             if (mobile)
             {
                 webBrowser1.Navigate("http://bing.com/search?q=" + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
-                if (countDown == 0) //We're on our last search. Reset to desktop.
+                if (countDown == 1) //We're on our last search. Reset to desktop.
                     mobile = false;
-            }
+            } 
             else
-            {
                 webBrowser1.Navigate(new Uri("http://bing.com/search?q=" + query));
-                if (countDown == 0) //Change to mobile when done with desktop searching.
-                {
-                    mobile = true;
-                    countDown = Convert.ToInt32(ReadSettings("settings", "mobilesearches")) + 1;
-                }
-            }
+
+            if (webBrowser1.Url.ToString().Contains(@"?q="))
+                countDown = countDown - 1;
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -191,9 +195,7 @@ namespace WindowsFormsApplication1
                 return;
 
             if (webBrowser1.Url.ToString().Contains(@"msn.com"))
-            {
                 webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
-            }
 
             if (mobile)
                 searchModeBox.Text = "mobile";
@@ -238,8 +240,7 @@ namespace WindowsFormsApplication1
         { //this is just so we can debug and watch to make sure we are really logged in.
             if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
                 return;
-            countDown = (Convert.ToInt32(ReadSettings("settings", "desktopsearches")) + 1);
-            startTimer.Enabled = false;
+            countDown = (Convert.ToInt32(ReadSettings("settings", "desktopsearches")));
             search(true);
             accountNum = accountNum + 1; //next account
         }

@@ -76,6 +76,7 @@
             // 
             // searchesLeftBox
             // 
+            this.searchesLeftBox.Enabled = false;
             this.searchesLeftBox.Location = new System.Drawing.Point(55, 33);
             this.searchesLeftBox.Name = "searchesLeftBox";
             this.searchesLeftBox.Size = new System.Drawing.Size(152, 20);
@@ -83,6 +84,7 @@
             // 
             // searchModeBox
             // 
+            this.searchModeBox.Enabled = false;
             this.searchModeBox.Location = new System.Drawing.Point(55, 56);
             this.searchModeBox.Name = "searchModeBox";
             this.searchModeBox.Size = new System.Drawing.Size(152, 20);
@@ -99,6 +101,7 @@
             // 
             // accountBox
             // 
+            this.accountBox.Enabled = false;
             this.accountBox.Location = new System.Drawing.Point(55, 10);
             this.accountBox.Name = "accountBox";
             this.accountBox.Size = new System.Drawing.Size(152, 20);
@@ -150,6 +153,7 @@
             // 
             // notesBox
             // 
+            this.notesBox.Enabled = false;
             this.notesBox.Location = new System.Drawing.Point(301, 9);
             this.notesBox.Multiline = true;
             this.notesBox.Name = "notesBox";
