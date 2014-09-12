@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace bingRewards
 {
     partial class Form1
     {

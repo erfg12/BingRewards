@@ -18,7 +18,7 @@ Step 2) You can change the default settings in settings.ini and words.txt
 with notepad or leave them the way they are, it's up to you.
 
 Step 3) Start bingRewards.exe and let it run. When it's complete the
-web browser window will end up on the newagesoldier.com/about page.
+web browser window will end up on the New Age Soldier donations page.
 
 
 How It Works
@@ -37,3 +37,18 @@ web browser URL to query bing and the function will continue to
 trigger until the desktopsearches/mobilesearches limit is met.
 Each change and timer is triggered when the document is completely
 loaded in the web browser as to not interrupt the searches.
+
+
+Settings Descriptions
+=====================
+startspeed 	-> After logging in, when does the searching start? In milliseconds.
+searchspeedmin 	-> Search randimization in milliseconds. Lowest number.
+searchspeedmax 	-> Search randimization in milliseconds. Highest number.
+autostart 	-> Start searching when the program starts executing. 0=off 1=on.
+hidebrowser 	-> Hides the browser window. Can be useful if you hear clicking noises.
+mobilesearches 	-> How many times show this program do searches on Bing mobile?
+desktopsearches -> How many times show this program do searches on Bing desktop?
+autoclose 	-> After all accounts are done searching and the program finishes, should it close after 30 seconds? 0=off 1=on.
+startminimized 	-> Start program minimized. Useful if program is setup on task scheduler.
+searchtype 	-> Bing search types. image,video,map,news,explore or normal.
+
