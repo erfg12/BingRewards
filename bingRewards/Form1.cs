@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Globalization;
+using System.Web;
 
 namespace bingRewards
 {
@@ -26,8 +27,8 @@ namespace bingRewards
         private string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
         MultiplatformIni iniSettings;
 
-        [DllImport("wininet.dll", SetLastError = true)]
-        private static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
+        //[DllImport("wininet.dll", SetLastError = true)]
+        //private static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
 
         public Form1()
         {
@@ -122,7 +123,7 @@ namespace bingRewards
                 username = words[0];
                 password = words[1];
 
-                InternetSetOption(IntPtr.Zero, 3, IntPtr.Zero, 0);
+                //InternetSetOption(IntPtr.Zero, 3, IntPtr.Zero, 0);
 
                 webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
                 return;
@@ -177,12 +178,12 @@ namespace bingRewards
 
             if (mobile)
             {
-                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500 Build/FRF91) AppleWebKit/533.0 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
                 if (countDown == 1) //We're on our last search. Reset to desktop.
                     mobile = false;
             } 
             else
-                webBrowser1.Navigate(new Uri(searchURL + query));
+                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)");
 
             if (webBrowser1.Url.ToString().Contains(@"?q="))
                 countDown = countDown - 1;
