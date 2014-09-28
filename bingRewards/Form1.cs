@@ -22,9 +22,9 @@ namespace bingRewards
         private int countDown = 0;
         private int accountNum = 0;
         private bool mobile = false; //start with desktop
-        private string settingsFile = Application.StartupPath + Path.DirectorySeparatorChar + "settings.ini";
-        private string wordsFile = Application.StartupPath + Path.DirectorySeparatorChar + "words.txt";
-        private string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
+        string settingsFile = Application.StartupPath + Path.DirectorySeparatorChar + "settings.ini";
+        string wordsFile = Application.StartupPath + Path.DirectorySeparatorChar + "words.txt";
+        string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
         MultiplatformIni iniSettings;
 
         //[DllImport("wininet.dll", SetLastError = true)]
@@ -117,16 +117,29 @@ namespace bingRewards
         {
             try
             {
-                string content = File.ReadLines(accountsFile).ElementAt(line);
+                string content = "";
+                using (StreamReader r = new StreamReader(accountsFile))
+                {
+                    string rLine;
+                    int i = 0;
+                    while ((rLine = r.ReadLine()) != null)
+                    {
+                        if (i == line)
+                        {
+                            content = rLine;
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                //string content = File.ReadLines(accountsFile).ElementAt(line); //old way
                 string[] words = content.Split('/');
                 startBtn.Enabled = false;
                 username = words[0];
                 password = words[1];
 
                 //InternetSetOption(IntPtr.Zero, 3, IntPtr.Zero, 0);
-
                 webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
-                return;
             }
             catch
             {
@@ -135,7 +148,6 @@ namespace bingRewards
                 webBrowser1.Navigate(new Uri("http://newagesoldier.com/myfiles/donations.html"));
                 if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "autoclose")) >= 1)
                     closeTimer.Enabled = true;
-                return;
             }
         }
 
