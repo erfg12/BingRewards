@@ -125,6 +125,7 @@ namespace bingRewards
                     string rLine;
                     int i = 0;
                     string[] uName;
+                    listBox1.Items.Clear();
                     while ((rLine = r.ReadLine()) != null)
                     {
                         uName = rLine.Split('/');
