@@ -43,6 +43,8 @@ namespace bingRewards
             startTimer.Enabled = false;
             webBrowser1.ScriptErrorsSuppressed = true;
             fileCheck();
+            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "startspeed")) > 60000)
+                stuckTimer.Interval = Convert.ToInt32(ReadSettings("settings", "startspeed")) + 1000;
             if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "startspeed")) > 100)
                 startTimer.Interval = Convert.ToInt32(ReadSettings("settings", "startspeed"));
             else
@@ -122,13 +124,13 @@ namespace bingRewards
                 {
                     string rLine;
                     int i = 0;
+                    string[] uName;
                     while ((rLine = r.ReadLine()) != null)
                     {
+                        uName = rLine.Split('/');
+                        listBox1.Items.Add(uName[0]);
                         if (i == line)
-                        {
                             content = rLine;
-                            break;
-                        }
                         i++;
                     }
                 }
@@ -145,7 +147,7 @@ namespace bingRewards
             {
                 startTimer.Enabled = false;
                 startBtn.Enabled = true;
-                webBrowser1.Navigate(new Uri("http://newagesoldier.com/myfiles/donations.html"));
+                webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf")); //done, log out
                 if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "autoclose")) >= 1)
                     closeTimer.Enabled = true;
             }
@@ -201,8 +203,14 @@ namespace bingRewards
                 countDown = countDown - 1;
         }
 
+        private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            stuckTimer.Enabled = true;
+        }
+
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            stuckTimer.Enabled = false;
             if (webBrowser1.Url.ToString() == "about:blank" || webBrowser1.Url.ToString() == "" || webBrowser1.Url == null || webBrowser1.Url.ToString().Contains(@"newagesoldier.com"))
                 return;
 
@@ -278,6 +286,11 @@ namespace bingRewards
         private void closeTimer_Tick(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void stuckTimer_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Enabled = true;
         }
     }
 }
