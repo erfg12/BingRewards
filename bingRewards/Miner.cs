@@ -15,7 +15,7 @@ using System.Web;
 
 namespace bingRewards
 {
-    public partial class Form1 : Form
+    public partial class Miner : Form
     {
         private string username;
         private string password;
@@ -30,12 +30,12 @@ namespace bingRewards
         //[DllImport("wininet.dll", SetLastError = true)]
         //private static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
 
-        public Form1()
+        public Miner()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Miner_Load(object sender, EventArgs e)
         {
             if (Convert.ToInt32(ReadSettings("settings", "startminimized")) >= 1)
                 this.WindowState = FormWindowState.Minimized;
@@ -281,7 +281,7 @@ namespace bingRewards
 
         private void label4_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.newagesoldier.com");
+            System.Diagnostics.Process.Start("https://newagesoldier.com/bing-rewards-program-thanks/");
         }
 
         private void closeTimer_Tick(object sender, EventArgs e)
