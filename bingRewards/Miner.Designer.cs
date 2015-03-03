@@ -48,8 +48,11 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -58,7 +61,7 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(962, 459);
+            this.webBrowser1.Size = new System.Drawing.Size(962, 706);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -187,7 +190,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(188, 459);
+            this.listBox1.Size = new System.Drawing.Size(188, 706);
             this.listBox1.TabIndex = 13;
             // 
             // groupBox1
@@ -195,7 +198,7 @@
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Location = new System.Drawing.Point(7, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 483);
+            this.groupBox1.Size = new System.Drawing.Size(200, 731);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounts";
@@ -205,16 +208,37 @@
             this.groupBox2.Controls.Add(this.webBrowser1);
             this.groupBox2.Location = new System.Drawing.Point(219, 33);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(974, 483);
+            this.groupBox2.Size = new System.Drawing.Size(974, 731);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Browser";
             // 
-            // Form1
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.webBrowser2);
+            this.panel1.Location = new System.Drawing.Point(1200, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(260, 760);
+            this.panel1.TabIndex = 16;
+            // 
+            // webBrowser2
+            // 
+            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser2.Name = "webBrowser2";
+            this.webBrowser2.ScriptErrorsSuppressed = true;
+            this.webBrowser2.ScrollBarsEnabled = false;
+            this.webBrowser2.Size = new System.Drawing.Size(260, 760);
+            this.webBrowser2.TabIndex = 0;
+            this.webBrowser2.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
+            // 
+            // Miner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 522);
+            this.ClientSize = new System.Drawing.Size(1472, 781);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
@@ -229,11 +253,12 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "Miner";
             this.Text = "Bing Rewards Search Bot";
             this.Load += new System.EventHandler(this.Miner_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,6 +284,8 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.WebBrowser webBrowser2;
     }
 }
 

@@ -37,6 +37,7 @@ namespace bingRewards
 
         private void Miner_Load(object sender, EventArgs e)
         {
+            webBrowser2.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebDocumentCompleted2);
             if (Convert.ToInt32(ReadSettings("settings", "startminimized")) >= 1)
                 this.WindowState = FormWindowState.Minimized;
             searchTimer.Enabled = false;
@@ -58,6 +59,30 @@ namespace bingRewards
             if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "hidebrowser")) >= 1)
                 webBrowser1.Visible = false;
             //MessageBox.Show("DEBUG: searchspeed=" + searchTimer.Interval.ToString() + " startspeed=" + startTimer.Interval.ToString());
+        }
+
+        public int getXoffset(HtmlElement el)
+        {
+            int xPos = el.OffsetRectangle.Left;
+            HtmlElement tempEl = el.OffsetParent;
+            while (tempEl != null)
+            {
+                xPos += tempEl.OffsetRectangle.Left;
+                tempEl = tempEl.OffsetParent;
+            }
+            return xPos;
+        }
+
+        public int getYoffset(HtmlElement el)
+        {
+            int yPos = el.OffsetRectangle.Top;
+            HtmlElement tempEl = el.OffsetParent;
+            while (tempEl != null)
+            {
+                yPos += tempEl.OffsetRectangle.Top;
+                tempEl = tempEl.OffsetParent;
+            }
+            return yPos;
         }
 
         public bool fileExists(string fileName)
@@ -292,6 +317,11 @@ namespace bingRewards
         private void stuckTimer_Tick(object sender, EventArgs e)
         {
             searchTimer.Enabled = true;
+        }
+
+        void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser2.Document.Window.ScrollTo(500, 9999);
         }
     }
 }
