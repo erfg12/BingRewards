@@ -9,16 +9,15 @@ It will use internet explorer settings. If you have viruses or malware
 on your PC, this program may not function correctly. Be sure you have
 a working copy of Internet Explorer.
 
-For Windows XP users, be sure you accept cookies on Internet Explorer.
+For Windows XP users, be sure you accept all cookies on Internet Explorer.
 
 Step 1) Open accounts.txt with notepad and type in your windows live 
 account email/password credentials. One account per line.
 
-Step 2) You can change the default settings in settings.ini and words.txt
-with notepad or leave them the way they are, it's up to you.
+Step 2) You can change words.txt with notepad or leave them the 
+way it is currently. It's completely up to you.
 
-Step 3) Start bingRewards.exe and let it run. When it's complete the
-web browser window will end up on the New Age Soldier donations page.
+Step 3) Start bingRewards.exe and press the start button and let it run.
 
 
 How It Works
