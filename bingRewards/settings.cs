@@ -61,5 +61,21 @@ namespace bingRewards
             startminimizedBox.Text = "false";
             searchtypeBox.Text = "normal";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.startspeed = Convert.ToInt32(startspeedBox.Text);
+            Properties.Settings.Default.searchspeedmin = Convert.ToInt32(searchspeedminBox.Text);
+            Properties.Settings.Default.searchspeedmax = Convert.ToInt32(searchspeedmaxBox.Text);
+            Properties.Settings.Default.autostart = Convert.ToBoolean(autostartBox.Text);
+            Properties.Settings.Default.hidebrowser = Convert.ToBoolean(hidebrowserBox.Text);
+            Properties.Settings.Default.mobilesearches = Convert.ToInt32(mobilesearchesBox.Text);
+            Properties.Settings.Default.desktopsearches = Convert.ToInt32(desktopsearchesBox.Text);
+            Properties.Settings.Default.autoclose = Convert.ToBoolean(autocloseBox.Text);
+            Properties.Settings.Default.startminimized = Convert.ToBoolean(startminimizedBox.Text);
+            Properties.Settings.Default.searchtype = searchtypeBox.Text;
+            Properties.Settings.Default.Save();
+            this.Close();
+        }
     }
 }

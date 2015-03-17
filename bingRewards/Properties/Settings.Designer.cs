@@ -131,12 +131,15 @@ namespace bingRewards.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("normal")]
         public string searchtype {
             get {
                 return ((string)(this["searchtype"]));
+            }
+            set {
+                this["searchtype"] = value;
             }
         }
     }

@@ -29,7 +29,7 @@
     <Setting Name="startminimized" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="searchtype" Type="System.String" Scope="Application">
+    <Setting Name="searchtype" Type="System.String" Scope="User">
       <Value Profile="(Default)">normal</Value>
     </Setting>
   </Settings>
