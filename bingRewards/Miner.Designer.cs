@@ -41,7 +41,6 @@
             this.startTimer = new System.Windows.Forms.Timer(this.components);
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
             this.startBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.notesBox = new System.Windows.Forms.TextBox();
             this.closeTimer = new System.Windows.Forms.Timer(this.components);
             this.stuckTimer = new System.Windows.Forms.Timer(this.components);
@@ -50,9 +49,17 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.speedmin = new System.Windows.Forms.TextBox();
+            this.speedmax = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -70,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(362, 9);
+            this.label1.Location = new System.Drawing.Point(351, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -79,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 9);
+            this.label2.Location = new System.Drawing.Point(218, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 2;
@@ -88,15 +95,15 @@
             // searchesLeftBox
             // 
             this.searchesLeftBox.Enabled = false;
-            this.searchesLeftBox.Location = new System.Drawing.Point(399, 6);
+            this.searchesLeftBox.Location = new System.Drawing.Point(389, 33);
             this.searchesLeftBox.Name = "searchesLeftBox";
-            this.searchesLeftBox.Size = new System.Drawing.Size(37, 20);
+            this.searchesLeftBox.Size = new System.Drawing.Size(47, 20);
             this.searchesLeftBox.TabIndex = 3;
             // 
             // searchModeBox
             // 
             this.searchModeBox.Enabled = false;
-            this.searchModeBox.Location = new System.Drawing.Point(268, 6);
+            this.searchModeBox.Location = new System.Drawing.Point(254, 33);
             this.searchModeBox.Name = "searchModeBox";
             this.searchModeBox.Size = new System.Drawing.Size(88, 20);
             this.searchModeBox.TabIndex = 4;
@@ -104,7 +111,7 @@
             // accountLabel
             // 
             this.accountLabel.AutoSize = true;
-            this.accountLabel.Location = new System.Drawing.Point(8, 9);
+            this.accountLabel.Location = new System.Drawing.Point(8, 36);
             this.accountLabel.Name = "accountLabel";
             this.accountLabel.Size = new System.Drawing.Size(47, 13);
             this.accountLabel.TabIndex = 5;
@@ -113,15 +120,15 @@
             // accountBox
             // 
             this.accountBox.Enabled = false;
-            this.accountBox.Location = new System.Drawing.Point(58, 6);
+            this.accountBox.Location = new System.Drawing.Point(58, 33);
             this.accountBox.Name = "accountBox";
-            this.accountBox.Size = new System.Drawing.Size(168, 20);
+            this.accountBox.Size = new System.Drawing.Size(149, 20);
             this.accountBox.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(444, 9);
+            this.label3.Location = new System.Drawing.Point(665, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 7;
@@ -139,9 +146,9 @@
             // 
             // startBtn
             // 
-            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.ForeColor = System.Drawing.Color.ForestGreen;
-            this.startBtn.Location = new System.Drawing.Point(1118, 4);
+            this.startBtn.Location = new System.Drawing.Point(1118, 31);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 11;
@@ -149,26 +156,13 @@
             this.startBtn.UseVisualStyleBackColor = true;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label4.Location = new System.Drawing.Point(991, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "NewAgeSoldier.com";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
             // notesBox
             // 
             this.notesBox.Enabled = false;
-            this.notesBox.Location = new System.Drawing.Point(491, 6);
+            this.notesBox.Location = new System.Drawing.Point(712, 32);
             this.notesBox.Multiline = true;
             this.notesBox.Name = "notesBox";
-            this.notesBox.Size = new System.Drawing.Size(490, 21);
+            this.notesBox.Size = new System.Drawing.Size(398, 21);
             this.notesBox.TabIndex = 10;
             this.notesBox.Text = "If you see windows login page, do not fill it in or login. The system will login " +
                 "itself. The search results will come up with 0 results most of the time. Ignore " +
@@ -196,7 +190,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(7, 33);
+            this.groupBox1.Location = new System.Drawing.Point(7, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 731);
             this.groupBox1.TabIndex = 14;
@@ -206,7 +200,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.webBrowser1);
-            this.groupBox2.Location = new System.Drawing.Point(219, 33);
+            this.groupBox2.Location = new System.Drawing.Point(219, 57);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(974, 731);
             this.groupBox2.TabIndex = 15;
@@ -216,7 +210,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.webBrowser2);
-            this.panel1.Location = new System.Drawing.Point(1200, 4);
+            this.panel1.Location = new System.Drawing.Point(1200, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(260, 760);
             this.panel1.TabIndex = 16;
@@ -233,15 +227,88 @@
             this.webBrowser2.TabIndex = 0;
             this.webBrowser2.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1472, 24);
+            this.statusStrip1.TabIndex = 17;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Window;
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(57, 19);
+            this.toolStripStatusLabel1.Text = "Settings";
+            this.toolStripStatusLabel1.ToolTipText = "Open Settings Menu";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Blue;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(140, 19);
+            this.toolStripStatusLabel2.Text = "Visit NewAgeSoldier.com";
+            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(444, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Speeds";
+            // 
+            // speedmin
+            // 
+            this.speedmin.Enabled = false;
+            this.speedmin.Location = new System.Drawing.Point(490, 33);
+            this.speedmin.Name = "speedmin";
+            this.speedmin.Size = new System.Drawing.Size(54, 20);
+            this.speedmin.TabIndex = 19;
+            // 
+            // speedmax
+            // 
+            this.speedmax.Enabled = false;
+            this.speedmax.Location = new System.Drawing.Point(554, 33);
+            this.speedmax.Name = "speedmax";
+            this.speedmax.Size = new System.Drawing.Size(50, 20);
+            this.speedmax.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(544, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "-";
+            // 
             // Miner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1472, 781);
+            this.ClientSize = new System.Drawing.Size(1472, 798);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.speedmax);
+            this.Controls.Add(this.speedmin);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.notesBox);
             this.Controls.Add(this.label3);
@@ -259,6 +326,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,7 +346,6 @@
         private System.Windows.Forms.Timer startTimer;
         private System.Windows.Forms.Timer searchTimer;
         private System.Windows.Forms.Button startBtn;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox notesBox;
         private System.Windows.Forms.Timer closeTimer;
         private System.Windows.Forms.Timer stuckTimer;
@@ -286,6 +354,13 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox speedmin;
+        private System.Windows.Forms.TextBox speedmax;
+        private System.Windows.Forms.Label label5;
     }
 }
 

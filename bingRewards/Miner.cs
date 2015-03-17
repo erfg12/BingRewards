@@ -22,13 +22,8 @@ namespace bingRewards
         private int countDown = 0;
         private int accountNum = 0;
         private bool mobile = false; //start with desktop
-        string settingsFile = Application.StartupPath + Path.DirectorySeparatorChar + "settings.ini";
         string wordsFile = Application.StartupPath + Path.DirectorySeparatorChar + "words.txt";
         string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
-        MultiplatformIni iniSettings;
-
-        //[DllImport("wininet.dll", SetLastError = true)]
-        //private static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
 
         public Miner()
         {
@@ -38,26 +33,30 @@ namespace bingRewards
         private void Miner_Load(object sender, EventArgs e)
         {
             webBrowser2.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebDocumentCompleted2);
-            if (Convert.ToInt32(ReadSettings("settings", "startminimized")) >= 1)
+            if (Convert.ToInt32(Properties.Settings.Default.startminimized) >= 1)
                 this.WindowState = FormWindowState.Minimized;
             searchTimer.Enabled = false;
             startTimer.Enabled = false;
             webBrowser1.ScriptErrorsSuppressed = true;
             fileCheck();
-            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "startspeed")) > 60000)
-                stuckTimer.Interval = Convert.ToInt32(ReadSettings("settings", "startspeed")) + 1000;
-            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "startspeed")) > 100)
-                startTimer.Interval = Convert.ToInt32(ReadSettings("settings", "startspeed"));
+            if (Properties.Settings.Default.startspeed > 60000)
+                stuckTimer.Interval = Properties.Settings.Default.startspeed + 1000;
+            if (Properties.Settings.Default.startspeed > 100)
+                startTimer.Interval = Properties.Settings.Default.startspeed;
             else
                 startTimer.Interval = 100;
-            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "searchspeedmin")) > 100 && Convert.ToInt32(ReadSettings("settings", "searchspeedmax")) > 100)
-                searchTimer.Interval = randomNumber(Convert.ToInt32(ReadSettings("settings", "searchspeedmin")), Convert.ToInt32(ReadSettings("settings", "searchspeedmax")));
+            if (Properties.Settings.Default.searchspeedmin > 100 && Properties.Settings.Default.searchspeedmax > 100)
+                searchTimer.Interval = randomNumber(Properties.Settings.Default.searchspeedmin, Properties.Settings.Default.searchspeedmax);
             else
                 searchTimer.Interval = 100;
-            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "autostart")) >= 1)
+            if (Convert.ToInt32(Properties.Settings.Default.autostart) >= 1)
                 ReadAccounts(accountNum);
-            if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "hidebrowser")) >= 1)
+            if (Convert.ToInt32(Properties.Settings.Default.hidebrowser) >= 1)
                 webBrowser1.Visible = false;
+
+            speedmin.Text = Properties.Settings.Default.searchspeedmin.ToString();
+            speedmax.Text = Properties.Settings.Default.searchspeedmax.ToString();
+
             //MessageBox.Show("DEBUG: searchspeed=" + searchTimer.Interval.ToString() + " startspeed=" + startTimer.Interval.ToString());
         }
 
@@ -95,18 +94,10 @@ namespace bingRewards
 
         public void fileCheck()
         {
-            if (!fileExists(settingsFile))
-                MessageBox.Show("File " + settingsFile + " is missing!");
             if (!fileExists(accountsFile))
                 MessageBox.Show("File " + accountsFile + " is missing!");
             if (!fileExists(wordsFile))
                 MessageBox.Show("File " + wordsFile + " is missing!");
-        }
-
-        public string ReadSettings(string section, string key)
-        {
-            iniSettings = new MultiplatformIni(settingsFile);
-            return iniSettings.ReadString(section, key, "0");
         }
 
         private int randomNumber(int min, int max)
@@ -160,13 +151,11 @@ namespace bingRewards
                         i++;
                     }
                 }
-                //string content = File.ReadLines(accountsFile).ElementAt(line); //old way
                 string[] words = content.Split('/');
                 startBtn.Enabled = false;
                 username = words[0];
                 password = words[1];
 
-                //InternetSetOption(IntPtr.Zero, 3, IntPtr.Zero, 0);
                 webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
             }
             catch
@@ -174,7 +163,7 @@ namespace bingRewards
                 startTimer.Enabled = false;
                 startBtn.Enabled = true;
                 webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf")); //done, log out
-                if (fileExists(settingsFile) && Convert.ToInt32(ReadSettings("settings", "autoclose")) >= 1)
+                if (Convert.ToInt32(Properties.Settings.Default.autoclose) >= 1)
                     closeTimer.Enabled = true;
             }
         }
@@ -201,19 +190,19 @@ namespace bingRewards
                 if (countDown == 1) //Change to mobile when done with desktop searching.
                 {
                     mobile = true;
-                    countDown = Convert.ToInt32(ReadSettings("settings", "mobilesearches"));
+                    countDown = Properties.Settings.Default.mobilesearches;
                 }
             }
 
-            if (ReadSettings("settings", "searchtype").Contains("image"))
+            if (Properties.Settings.Default.searchtype.Contains("image"))
                 searchURL = "http://www.bing.com/images/search?q=";
-            else if (ReadSettings("settings", "searchtype").Contains("video"))
+            else if (Properties.Settings.Default.searchtype.Contains("video"))
                 searchURL = "http://www.bing.com/videos/search?q=";
-            else if (ReadSettings("settings", "searchtype").Contains("map"))
+            else if (Properties.Settings.Default.searchtype.Contains("map"))
                 searchURL = "http://www.bing.com/maps/default.aspx?q=";
-            else if (ReadSettings("settings", "searchtype").Contains("news"))
+            else if (Properties.Settings.Default.searchtype.Contains("news"))
                 searchURL = "http://www.bing.com/news/search?q=";
-            else if (ReadSettings("settings", "searchtype").Contains("explore") || ReadSettings("settings", "searchtype").Contains("more"))
+            else if (Properties.Settings.Default.searchtype.Contains("explore") || Properties.Settings.Default.searchtype.Contains("more"))
                 searchURL = "http://www.bing.com/explore?q=";
 
             if (mobile)
@@ -221,7 +210,7 @@ namespace bingRewards
                 webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500 Build/FRF91) AppleWebKit/533.0 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
                 if (countDown == 1) //We're on our last search. Reset to desktop.
                     mobile = false;
-            } 
+            }
             else
                 webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)");
 
@@ -285,7 +274,7 @@ namespace bingRewards
         { //this is just so we can debug and watch to make sure we are really logged in.
             if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
                 return;
-            countDown = (Convert.ToInt32(ReadSettings("settings", "desktopsearches")));
+            countDown = (Convert.ToInt32(Properties.Settings.Default.mobilesearches));
             search(true);
             accountNum = accountNum + 1; //next account
         }
@@ -296,17 +285,12 @@ namespace bingRewards
                 return;
             search();
             searchTimer.Enabled = false;
-            searchTimer.Interval = randomNumber(Convert.ToInt32(ReadSettings("settings", "searchspeedmin")), Convert.ToInt32(ReadSettings("settings", "searchspeedmax")));
+            searchTimer.Interval = randomNumber(Properties.Settings.Default.searchspeedmin, Properties.Settings.Default.searchspeedmax);
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             ReadAccounts(accountNum);
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://newagesoldier.com/bing-rewards-program-thanks/");
         }
 
         private void closeTimer_Tick(object sender, EventArgs e)
@@ -322,6 +306,17 @@ namespace bingRewards
         void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             webBrowser2.Document.Window.ScrollTo(500, 9999);
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            settings settingsForm = new settings();
+            settingsForm.Show();
+        }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://newagesoldier.com/bing-rewards-program-thanks/");
         }
     }
 }

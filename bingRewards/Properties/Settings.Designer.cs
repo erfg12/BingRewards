@@ -22,5 +22,122 @@ namespace bingRewards.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6000")]
+        public int startspeed {
+            get {
+                return ((int)(this["startspeed"]));
+            }
+            set {
+                this["startspeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int searchspeedmin {
+            get {
+                return ((int)(this["searchspeedmin"]));
+            }
+            set {
+                this["searchspeedmin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int searchspeedmax {
+            get {
+                return ((int)(this["searchspeedmax"]));
+            }
+            set {
+                this["searchspeedmax"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autostart {
+            get {
+                return ((bool)(this["autostart"]));
+            }
+            set {
+                this["autostart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hidebrowser {
+            get {
+                return ((bool)(this["hidebrowser"]));
+            }
+            set {
+                this["hidebrowser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int mobilesearches {
+            get {
+                return ((int)(this["mobilesearches"]));
+            }
+            set {
+                this["mobilesearches"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int desktopsearches {
+            get {
+                return ((int)(this["desktopsearches"]));
+            }
+            set {
+                this["desktopsearches"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autoclose {
+            get {
+                return ((bool)(this["autoclose"]));
+            }
+            set {
+                this["autoclose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool startminimized {
+            get {
+                return ((bool)(this["startminimized"]));
+            }
+            set {
+                this["startminimized"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("normal")]
+        public string searchtype {
+            get {
+                return ((string)(this["searchtype"]));
+            }
+        }
     }
 }

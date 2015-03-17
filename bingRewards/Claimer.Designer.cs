@@ -28,19 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Claimer));
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.accountLabel = new System.Windows.Forms.Label();
             this.accountBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.startTimer = new System.Windows.Forms.Timer(this.components);
-            this.searchTimer = new System.Windows.Forms.Timer(this.components);
             this.startBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.notesBox = new System.Windows.Forms.TextBox();
-            this.closeTimer = new System.Windows.Forms.Timer(this.components);
-            this.stuckTimer = new System.Windows.Forms.Timer(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -86,16 +81,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Address";
             // 
-            // startTimer
-            // 
-            this.startTimer.Interval = 50000;
-            this.startTimer.Tick += new System.EventHandler(this.startTimer_Tick);
-            // 
-            // searchTimer
-            // 
-            this.searchTimer.Interval = 50000;
-            this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
-            // 
             // startBtn
             // 
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,16 +118,6 @@
                 "itself. The search results will come up with 0 results most of the time. Ignore " +
                 "this, this still counts as a search.";
             // 
-            // closeTimer
-            // 
-            this.closeTimer.Interval = 30000;
-            this.closeTimer.Tick += new System.EventHandler(this.closeTimer_Tick);
-            // 
-            // stuckTimer
-            // 
-            this.stuckTimer.Interval = 60000;
-            this.stuckTimer.Tick += new System.EventHandler(this.stuckTimer_Tick);
-            // 
             // listBox1
             // 
             this.listBox1.Enabled = false;
@@ -172,7 +147,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Browser";
             // 
-            // Form1
+            // Claimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,7 +162,7 @@
             this.Controls.Add(this.accountLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "Claimer";
             this.Text = "Bing Rewards Search Bot";
             this.Load += new System.EventHandler(this.Claimer_Load);
             this.groupBox1.ResumeLayout(false);
@@ -203,13 +178,9 @@
         private System.Windows.Forms.Label accountLabel;
         private System.Windows.Forms.TextBox accountBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Timer startTimer;
-        private System.Windows.Forms.Timer searchTimer;
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox notesBox;
-        private System.Windows.Forms.Timer closeTimer;
-        private System.Windows.Forms.Timer stuckTimer;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
