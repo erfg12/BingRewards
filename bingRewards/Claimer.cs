@@ -19,7 +19,7 @@ namespace bingRewards
     {
         private string username;
         private string password;
-        private int countDown = 0;
+        private int countDown = Properties.Settings.Default.desktopsearches;
         private int accountNum = 0;
         MultiplatformIni iniSettings;
 

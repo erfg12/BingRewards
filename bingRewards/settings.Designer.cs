@@ -157,6 +157,7 @@
             this.mobilesearchesBox.Name = "mobilesearchesBox";
             this.mobilesearchesBox.Size = new System.Drawing.Size(149, 20);
             this.mobilesearchesBox.TabIndex = 11;
+            this.mobilesearchesBox.TextChanged += new System.EventHandler(this.mobilesearchesBox_TextChanged);
             // 
             // label6
             // 

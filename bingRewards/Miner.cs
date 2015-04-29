@@ -19,7 +19,7 @@ namespace bingRewards
     {
         private string username;
         private string password;
-        private int countDown = 0;
+        private int countDown = Properties.Settings.Default.desktopsearches;
         private int accountNum = 0;
         private bool mobile = false; //start with desktop
         string wordsFile = Application.StartupPath + Path.DirectorySeparatorChar + "words.txt";
@@ -39,18 +39,23 @@ namespace bingRewards
             startTimer.Enabled = false;
             webBrowser1.ScriptErrorsSuppressed = true;
             fileCheck();
-            if (Properties.Settings.Default.startspeed > 60000)
+
+            if (Properties.Settings.Default.startspeed > 60000) //anything faster than this is too slow
                 stuckTimer.Interval = Properties.Settings.Default.startspeed + 1000;
-            if (Properties.Settings.Default.startspeed > 100)
+
+            if (Properties.Settings.Default.startspeed > 100) //anything lower than this is too fast
                 startTimer.Interval = Properties.Settings.Default.startspeed;
             else
                 startTimer.Interval = 100;
+
             if (Properties.Settings.Default.searchspeedmin > 100 && Properties.Settings.Default.searchspeedmax > 100)
                 searchTimer.Interval = randomNumber(Properties.Settings.Default.searchspeedmin, Properties.Settings.Default.searchspeedmax);
             else
                 searchTimer.Interval = 100;
+
             if (Convert.ToInt32(Properties.Settings.Default.autostart) >= 1)
                 ReadAccounts(accountNum);
+
             if (Convert.ToInt32(Properties.Settings.Default.hidebrowser) >= 1)
                 webBrowser1.Visible = false;
 

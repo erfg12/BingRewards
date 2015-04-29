@@ -77,5 +77,10 @@ namespace bingRewards
             Properties.Settings.Default.Save();
             this.Close();
         }
+
+        private void mobilesearchesBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
