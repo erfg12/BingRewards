@@ -337,7 +337,7 @@ namespace bingRewards
 
         void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            webBrowser2.Document.Window.ScrollTo(500, 9999);
+            webBrowser2.Document.Window.ScrollTo(0, 9999);
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
