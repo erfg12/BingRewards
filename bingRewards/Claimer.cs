@@ -41,7 +41,7 @@ namespace bingRewards
                 return false;
             else
                 return true;
-        }
+        } 
 
         private void ReadAccounts(int line)
         {

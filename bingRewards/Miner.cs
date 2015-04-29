@@ -62,7 +62,34 @@ namespace bingRewards
             speedmin.Text = Properties.Settings.Default.searchspeedmin.ToString();
             speedmax.Text = Properties.Settings.Default.searchspeedmax.ToString();
 
+            ListAccounts();
+
             //MessageBox.Show("DEBUG: searchspeed=" + searchTimer.Interval.ToString() + " startspeed=" + startTimer.Interval.ToString());
+        }
+
+        private void ListAccounts()
+        {
+            try
+            {
+                string content = "";
+                using (StreamReader r = new StreamReader(accountsFile))
+                {
+                    string rLine;
+                    int i = 0;
+                    string[] uName;
+                    listBox1.Items.Clear();
+                    while ((rLine = r.ReadLine()) != null)
+                    {
+                        uName = rLine.Split('/');
+                        listBox1.Items.Add(uName[0]);
+                        content = rLine;
+                        i++;
+                    }
+                }
+            }
+            catch
+            {
+            }
         }
 
         public int getXoffset(HtmlElement el)
