@@ -340,15 +340,25 @@ namespace bingRewards
             webBrowser2.Document.Window.ScrollTo(0, 9999);
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        private void readmeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("readme.txt");
+        }
+
+        private void forumsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://newagesoldier.com/forum/viewforum.php?f=4");
+        }
+
+        private void softwareInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://newagesoldier.com/bing-rewards-bot/");
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             settings settingsForm = new settings();
             settingsForm.Show();
-        }
-
-        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://newagesoldier.com/bing-rewards-program-thanks/");
         }
     }
 }

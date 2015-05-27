@@ -35,6 +35,9 @@ namespace bingRewards
             autocloseBox.DropDownStyle = ComboBoxStyle.DropDownList;
             startminimizedBox.DropDownStyle = ComboBoxStyle.DropDownList;
             searchtypeBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            accountsBox.Text = System.IO.File.ReadAllText("accounts.txt");
+            searchWordsBox.Text = System.IO.File.ReadAllText("words.txt");
             
             startspeedBox.Text = Properties.Settings.Default.startspeed.ToString();
             searchspeedminBox.Text = Properties.Settings.Default.searchspeedmin.ToString();
@@ -75,6 +78,10 @@ namespace bingRewards
             Properties.Settings.Default.startminimized = Convert.ToBoolean(startminimizedBox.Text);
             Properties.Settings.Default.searchtype = searchtypeBox.Text;
             Properties.Settings.Default.Save();
+
+            System.IO.File.WriteAllText("accounts.txt", accountsBox.Text);
+            System.IO.File.WriteAllText("words.txt", searchWordsBox.Text);
+
             this.Close();
         }
 

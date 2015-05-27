@@ -52,6 +52,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.defaultsBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.accountsLabel = new System.Windows.Forms.Label();
+            this.accountsBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.searchWordsBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // startspeedBox
@@ -276,11 +280,53 @@
             this.textBox1.Text = "After saving settings, please restart the program!";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // accountsLabel
+            // 
+            this.accountsLabel.AutoSize = true;
+            this.accountsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accountsLabel.Location = new System.Drawing.Point(371, 13);
+            this.accountsLabel.Name = "accountsLabel";
+            this.accountsLabel.Size = new System.Drawing.Size(137, 20);
+            this.accountsLabel.TabIndex = 25;
+            this.accountsLabel.Text = "LIVE ACCOUNTS";
+            // 
+            // accountsBox
+            // 
+            this.accountsBox.Location = new System.Drawing.Point(293, 39);
+            this.accountsBox.Multiline = true;
+            this.accountsBox.Name = "accountsBox";
+            this.accountsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.accountsBox.Size = new System.Drawing.Size(307, 307);
+            this.accountsBox.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(687, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(143, 20);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "SEARCH WORDS";
+            // 
+            // searchWordsBox
+            // 
+            this.searchWordsBox.Location = new System.Drawing.Point(606, 39);
+            this.searchWordsBox.Multiline = true;
+            this.searchWordsBox.Name = "searchWordsBox";
+            this.searchWordsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.searchWordsBox.Size = new System.Drawing.Size(307, 307);
+            this.searchWordsBox.TabIndex = 28;
+            // 
             // settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 350);
+            this.ClientSize = new System.Drawing.Size(917, 350);
+            this.Controls.Add(this.searchWordsBox);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.accountsBox);
+            this.Controls.Add(this.accountsLabel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.defaultsBtn);
             this.Controls.Add(this.button1);
@@ -341,5 +387,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button defaultsBtn;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label accountsLabel;
+        private System.Windows.Forms.TextBox accountsBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox searchWordsBox;
     }
 }

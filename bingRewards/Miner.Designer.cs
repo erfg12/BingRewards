@@ -50,12 +50,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.speedmin = new System.Windows.Forms.TextBox();
             this.speedmax = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.softwareInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -165,8 +169,8 @@
             this.notesBox.Size = new System.Drawing.Size(398, 21);
             this.notesBox.TabIndex = 10;
             this.notesBox.Text = "If you see windows login page, do not fill it in or login. The system will login " +
-                "itself. The search results will come up with 0 results most of the time. Ignore " +
-                "this, this still counts as a search.";
+    "itself. The search results will come up with 0 results most of the time. Ignore " +
+    "this, this still counts as a search.";
             // 
             // closeTimer
             // 
@@ -232,35 +236,13 @@
             this.statusStrip1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripDropDownButton2,
+            this.toolStripDropDownButton1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1472, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1472, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(57, 19);
-            this.toolStripStatusLabel1.Text = "Settings";
-            this.toolStripStatusLabel1.ToolTipText = "Open Settings Menu";
-            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Blue;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(140, 19);
-            this.toolStripStatusLabel2.Text = "Visit NewAgeSoldier.com";
-            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
             // 
             // label4
             // 
@@ -295,6 +277,58 @@
             this.label5.Size = new System.Drawing.Size(10, 13);
             this.label5.TabIndex = 21;
             this.label5.Text = "-";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.readmeToolStripMenuItem,
+            this.forumsToolStripMenuItem,
+            this.softwareInformationToolStripMenuItem});
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(62, 22);
+            this.toolStripDropDownButton1.Text = "Support";
+            this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // readmeToolStripMenuItem
+            // 
+            this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
+            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.readmeToolStripMenuItem.Text = "Readme";
+            this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
+            // 
+            // forumsToolStripMenuItem
+            // 
+            this.forumsToolStripMenuItem.Name = "forumsToolStripMenuItem";
+            this.forumsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.forumsToolStripMenuItem.Text = "Support Forums";
+            this.forumsToolStripMenuItem.Click += new System.EventHandler(this.forumsToolStripMenuItem_Click);
+            // 
+            // softwareInformationToolStripMenuItem
+            // 
+            this.softwareInformationToolStripMenuItem.Name = "softwareInformationToolStripMenuItem";
+            this.softwareInformationToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.softwareInformationToolStripMenuItem.Text = "Software Information";
+            this.softwareInformationToolStripMenuItem.Click += new System.EventHandler(this.softwareInformationToolStripMenuItem_Click);
+            // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(38, 20);
+            this.toolStripDropDownButton2.Text = "File";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // Miner
             // 
@@ -355,12 +389,16 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox speedmin;
         private System.Windows.Forms.TextBox speedmax;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem readmeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forumsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem softwareInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
 

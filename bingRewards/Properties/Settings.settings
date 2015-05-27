@@ -21,7 +21,7 @@
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="desktopsearches" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">30</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="autoclose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
