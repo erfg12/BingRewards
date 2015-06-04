@@ -239,12 +239,12 @@ namespace bingRewards
 
             if (mobile)
             {
-                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Linux; U; Android 2.2; en-gb; LG-P500 Build/FRF91) AppleWebKit/533.0 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
+                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3");
                 if (countDown == 1) //We're on our last search. Reset to desktop.
                     mobile = false;
             }
             else
-                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)");
+                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)");
 
             if (webBrowser1.Url.ToString().Contains(@"?q="))
                 countDown = countDown - 1;
