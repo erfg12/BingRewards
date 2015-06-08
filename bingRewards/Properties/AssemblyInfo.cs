@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Bing rewards mining program")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("New Age Soldier")]
-[assembly: AssemblyProduct("WindowsFormsApplication1.Properties")]
-[assembly: AssemblyCopyright("2014")]
+[assembly: AssemblyProduct("Bing Rewards Search Bot")]
+[assembly: AssemblyCopyright("2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1")]
+[assembly: AssemblyVersion("1.0.1")]
+[assembly: AssemblyFileVersion("1.0.1")]

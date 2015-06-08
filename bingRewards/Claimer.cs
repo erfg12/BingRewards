@@ -19,7 +19,6 @@ namespace bingRewards
     {
         private string username;
         private string password;
-        private int countDown = Properties.Settings.Default.desktopsearches;
         private int accountNum = 0;
 
         string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";

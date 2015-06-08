@@ -202,11 +202,9 @@ namespace bingRewards
 
         private void search(Boolean skip = false)
         {
+            stopBtn.Enabled = true;
             string query = GetRandomSentence(randomNumber(3,6));
             string searchURL = "http://bing.com/search?q=";
-
-            if (webBrowser1.Url.ToString().Contains(@"newagesoldier.com"))
-                return;
 
             if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
             {
@@ -306,7 +304,8 @@ namespace bingRewards
         { //this is just so we can debug and watch to make sure we are really logged in.
             if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
                 return;
-            countDown = (Convert.ToInt32(Properties.Settings.Default.mobilesearches));
+            if (countDown == 0 && !mobile)
+                countDown = Properties.Settings.Default.desktopsearches;
             search(true);
             accountNum = accountNum + 1; //next account
         }
@@ -322,7 +321,11 @@ namespace bingRewards
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            ReadAccounts(accountNum);
+            startBtn.Enabled = false;
+            if (countDown > 0)
+                searchTimer.Enabled = true;
+            else
+                ReadAccounts(accountNum);
         }
 
         private void closeTimer_Tick(object sender, EventArgs e)
@@ -359,6 +362,19 @@ namespace bingRewards
         {
             settings settingsForm = new settings();
             settingsForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            searchTimer.Enabled = false;
+            startBtn.Enabled = true;
+            stopBtn.Enabled = false;
+        }
+
+        private void aboutThisSoftwareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutForm = new AboutBox1();
+            aboutForm.Show();
         }
     }
 }
