@@ -35,8 +35,6 @@ namespace bingRewards
             webBrowser2.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebDocumentCompleted2);
             if (Convert.ToInt32(Properties.Settings.Default.startminimized) >= 1)
                 this.WindowState = FormWindowState.Minimized;
-            searchTimer.Enabled = false;
-            startTimer.Enabled = false;
             webBrowser1.ScriptErrorsSuppressed = true;
             fileCheck();
 
@@ -53,9 +51,6 @@ namespace bingRewards
             else
                 searchTimer.Interval = 100;
 
-            if (Convert.ToInt32(Properties.Settings.Default.autostart) >= 1)
-                ReadAccounts(accountNum);
-
             if (Convert.ToInt32(Properties.Settings.Default.hidebrowser) >= 1)
                 webBrowser1.Visible = false;
 
@@ -63,7 +58,9 @@ namespace bingRewards
             speedmax.Text = Properties.Settings.Default.searchspeedmax.ToString();
 
             ListAccounts();
-
+            
+            if (Convert.ToInt32(Properties.Settings.Default.autostart) >= 1)
+                startTimer.Enabled = true;
             //MessageBox.Show("DEBUG: searchspeed=" + searchTimer.Interval.ToString() + " startspeed=" + startTimer.Interval.ToString());
         }
 
@@ -167,6 +164,7 @@ namespace bingRewards
         {
             try
             {
+                mobile = false;
                 string content = "";
                 using (StreamReader r = new StreamReader(accountsFile))
                 {
@@ -187,42 +185,22 @@ namespace bingRewards
                 startBtn.Enabled = false;
                 username = words[0];
                 password = words[1];
-
-                webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
             }
             catch
             {
+                MessageBox.Show("caught error");
                 startTimer.Enabled = false;
                 startBtn.Enabled = true;
-                webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf")); //done, log out
                 if (Convert.ToInt32(Properties.Settings.Default.autoclose) >= 1)
-                    closeTimer.Enabled = true;
+                    Application.Exit();
             }
         }
 
-        private void search(Boolean skip = false)
+        private void search()
         {
             stopBtn.Enabled = true;
             string query = GetRandomSentence(randomNumber(3,6));
             string searchURL = "http://bing.com/search?q=";
-
-            if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
-            {
-                if (!skip)
-                {
-                    startTimer.Enabled = true;
-                    return;
-                }
-            }
-
-            if (!mobile)
-            {
-                if (countDown == 1) //Change to mobile when done with desktop searching.
-                {
-                    mobile = true;
-                    countDown = Properties.Settings.Default.mobilesearches;
-                }
-            }
 
             if (Properties.Settings.Default.searchtype.Contains("image"))
                 searchURL = "http://www.bing.com/images/search?q=";
@@ -236,11 +214,7 @@ namespace bingRewards
                 searchURL = "http://www.bing.com/explore?q=";
 
             if (mobile)
-            {
                 webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3");
-                if (countDown == 1) //We're on our last search. Reset to desktop.
-                    mobile = false;
-            }
             else
                 webBrowser1.Navigate(searchURL + query, null, null, "");
 
@@ -250,27 +224,14 @@ namespace bingRewards
 
         private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
+            notesBox.Text = webBrowser1.Url.ToString();
             stuckTimer.Enabled = true;
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             stuckTimer.Enabled = false;
-            if (webBrowser1.Url.ToString() == "about:blank" || webBrowser1.Url.ToString() == "" || webBrowser1.Url == null || webBrowser1.Url.ToString().Contains(@"newagesoldier.com"))
-                return;
 
-            if (webBrowser1.Url.ToString().Contains(@"msn.com"))
-                webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
-
-            if (mobile)
-                searchModeBox.Text = "mobile";
-            else
-                searchModeBox.Text = "desktop";
-
-            searchesLeftBox.Text = countDown.ToString();
-            accountBox.Text = username;
-
-            notesBox.Text = webBrowser1.Url.ToString();
             if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
             {
                 foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
@@ -285,52 +246,78 @@ namespace bingRewards
                 return;
             }
 
-            if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
-                startTimer.Enabled = true;
-
-            if (webBrowser1.Url.ToString().Contains(@"bing.com/Passport") || webBrowser1.Url.ToString().Contains(@"login.live.com/gls") || webBrowser1.Url.ToString().Contains(@"login.live.com/logout") || webBrowser1.Url.ToString().Contains(@"bing.com/secure") || webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard") || webBrowser1.Url.ToString().Contains(@"msn.com"))
-                return; //let timer finish the login process before reading another account OR going to the next search.
-
-            if (!webBrowser1.Url.ToString().Contains(@"?q="))
+            if (webBrowser1.Url.ToString() == "" || webBrowser1.Url == null || webBrowser1.Url.ToString().Contains(@"about:blank") || webBrowser1.Url.ToString().Contains(@"newagesoldier")) //could be refreshing page, or script behined the scenes
                 return;
 
-            if (countDown >= 1)
-                searchTimer.Enabled = true;
+            if (webBrowser1.Url.ToString().Equals(@"http://www.msn.com/"))
+            {
+                dashboardWait.Enabled = true;
+                webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
+                return;
+            }
+
+            if (webBrowser1.Url.ToString().Contains(@"bing.com/Passport") || webBrowser1.Url.ToString().Contains(@"live.com") || webBrowser1.Url.ToString().Contains(@"bing.com/secure"))
+                return; //after logout, we are redirected. Please wait.
+
+            if (mobile)
+                searchModeBox.Text = "mobile";
             else
-                ReadAccounts(accountNum);
+                searchModeBox.Text = "desktop";
+
+            if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+            {
+                dashboardWait.Enabled = true;
+                return;
+            }
+
+            if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+                return;
+
+            searchesLeftBox.Text = countDown.ToString();
+            accountBox.Text = username;
+
+            if (countDown == 0)
+            {
+                if (mobile) //just finished with mobile, back to desktop
+                    startTimer.Enabled = true;
+                else
+                { //switch to mobile
+                    mobile = true;
+                    countDown = Properties.Settings.Default.mobilesearches;
+                    searchTimer.Enabled = true;
+                }
+            }
+            else
+                searchTimer.Enabled = true;
+
+            if (!webBrowser1.Url.ToString().Contains(@"?q="))
+               return;
         }
 
         private void startTimer_Tick(object sender, EventArgs e)
-        { //this is just so we can debug and watch to make sure we are really logged in.
-            if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
-                return;
-            if (countDown == 0 && !mobile)
-                countDown = Properties.Settings.Default.desktopsearches;
-            search(true);
+        {
+            ReadAccounts(accountNum); //load in the accounts data first, then browse to cookie destroyer. This will trigger the start.
+            webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
+            webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
+            countDown = Properties.Settings.Default.desktopsearches;
             accountNum = accountNum + 1; //next account
+            startTimer.Enabled = false;
         }
 
         private void searchTimer_Tick(object sender, EventArgs e)
         {
-            if (!webBrowser1.Url.ToString().Contains(@"?q="))
-                return;
+            searchTimer.Interval = randomNumber(Properties.Settings.Default.searchspeedmin, Properties.Settings.Default.searchspeedmax);
             search();
             searchTimer.Enabled = false;
-            searchTimer.Interval = randomNumber(Properties.Settings.Default.searchspeedmin, Properties.Settings.Default.searchspeedmax);
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             startBtn.Enabled = false;
-            if (countDown > 0)
+            if (countDown > 0 && !webBrowser1.Url.ToString().Contains(@"newagesoldier.com") && !webBrowser1.Url.ToString().Contains(@"about:blank"))
                 searchTimer.Enabled = true;
             else
-                ReadAccounts(accountNum);
-        }
-
-        private void closeTimer_Tick(object sender, EventArgs e)
-        {
-            Application.Exit();
+                startTimer.Enabled = true;
         }
 
         private void stuckTimer_Tick(object sender, EventArgs e)
@@ -375,6 +362,12 @@ namespace bingRewards
         {
             AboutBox1 aboutForm = new AboutBox1();
             aboutForm.Show();
+        }
+
+        private void dashboardWait_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Enabled = true;
+            dashboardWait.Enabled = false;
         }
     }
 }

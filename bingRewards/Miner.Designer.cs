@@ -42,7 +42,6 @@
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
             this.startBtn = new System.Windows.Forms.Button();
             this.notesBox = new System.Windows.Forms.TextBox();
-            this.closeTimer = new System.Windows.Forms.Timer(this.components);
             this.stuckTimer = new System.Windows.Forms.Timer(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,12 +55,13 @@
             this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.softwareInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutThisSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.speedmin = new System.Windows.Forms.TextBox();
             this.speedmax = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.stopBtn = new System.Windows.Forms.Button();
-            this.aboutThisSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dashboardWait = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -76,7 +76,7 @@
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Size = new System.Drawing.Size(962, 706);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
+            this.webBrowser1.Url = new System.Uri("http://newagesoldier.com/", System.UriKind.Absolute);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             this.webBrowser1.ProgressChanged += new System.Windows.Forms.WebBrowserProgressChangedEventHandler(this.webBrowser1_ProgressChanged);
             // 
@@ -170,14 +170,7 @@
             this.notesBox.Name = "notesBox";
             this.notesBox.Size = new System.Drawing.Size(387, 21);
             this.notesBox.TabIndex = 10;
-            this.notesBox.Text = "If you see windows login page, do not fill it in or login. The system will login " +
-                "itself. The search results will come up with 0 results most of the time. Ignore " +
-                "this, this still counts as a search.";
-            // 
-            // closeTimer
-            // 
-            this.closeTimer.Interval = 30000;
-            this.closeTimer.Tick += new System.EventHandler(this.closeTimer_Tick);
+            this.notesBox.Text = "(BLANK)";
             // 
             // stuckTimer
             // 
@@ -299,6 +292,13 @@
             this.softwareInformationToolStripMenuItem.Text = "Software Information";
             this.softwareInformationToolStripMenuItem.Click += new System.EventHandler(this.softwareInformationToolStripMenuItem_Click);
             // 
+            // aboutThisSoftwareToolStripMenuItem
+            // 
+            this.aboutThisSoftwareToolStripMenuItem.Name = "aboutThisSoftwareToolStripMenuItem";
+            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.aboutThisSoftwareToolStripMenuItem.Text = "About This Software";
+            this.aboutThisSoftwareToolStripMenuItem.Click += new System.EventHandler(this.aboutThisSoftwareToolStripMenuItem_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -346,12 +346,10 @@
             this.stopBtn.UseVisualStyleBackColor = true;
             this.stopBtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // aboutThisSoftwareToolStripMenuItem
+            // dashboardWait
             // 
-            this.aboutThisSoftwareToolStripMenuItem.Name = "aboutThisSoftwareToolStripMenuItem";
-            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.aboutThisSoftwareToolStripMenuItem.Text = "About This Software";
-            this.aboutThisSoftwareToolStripMenuItem.Click += new System.EventHandler(this.aboutThisSoftwareToolStripMenuItem_Click);
+            this.dashboardWait.Interval = 5000;
+            this.dashboardWait.Tick += new System.EventHandler(this.dashboardWait_Tick);
             // 
             // Miner
             // 
@@ -405,7 +403,6 @@
         private System.Windows.Forms.Timer searchTimer;
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.TextBox notesBox;
-        private System.Windows.Forms.Timer closeTimer;
         private System.Windows.Forms.Timer stuckTimer;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -425,6 +422,7 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutThisSoftwareToolStripMenuItem;
+        private System.Windows.Forms.Timer dashboardWait;
     }
 }
 

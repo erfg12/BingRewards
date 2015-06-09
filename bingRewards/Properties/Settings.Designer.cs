@@ -25,7 +25,7 @@ namespace bingRewards.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
         public int startspeed {
             get {
                 return ((int)(this["startspeed"]));
@@ -37,7 +37,7 @@ namespace bingRewards.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
         public int searchspeedmin {
             get {
                 return ((int)(this["searchspeedmin"]));
@@ -49,7 +49,7 @@ namespace bingRewards.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
         public int searchspeedmax {
             get {
                 return ((int)(this["searchspeedmax"]));

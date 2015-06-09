@@ -55,12 +55,6 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="Claimer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Claimer.Designer.cs">
-      <DependentUpon>Claimer.cs</DependentUpon>
-    </Compile>
     <Compile Include="settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,9 +71,6 @@
     <Compile Include="Program.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Claimer.resx">
-      <DependentUpon>Claimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Miner.resx">
       <DependentUpon>Miner.cs</DependentUpon>
