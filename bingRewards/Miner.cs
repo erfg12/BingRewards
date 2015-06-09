@@ -297,8 +297,16 @@ namespace bingRewards
         private void startTimer_Tick(object sender, EventArgs e)
         {
             ReadAccounts(accountNum); //load in the accounts data first, then browse to cookie destroyer. This will trigger the start.
-            webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
-            webBrowser1.Navigate(new Uri("https://login.live.com/logout.srf"));
+            //webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
+
+
+            string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
+            foreach (string currentFile in theCookies)
+            {
+                System.IO.File.Delete(currentFile);
+            }
+
+            webBrowser1.Document.Window.Navigate(new Uri("https://login.live.com/logout.srf"));
             countDown = Properties.Settings.Default.desktopsearches;
             accountNum = accountNum + 1; //next account
             startTimer.Enabled = false;
