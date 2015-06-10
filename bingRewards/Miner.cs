@@ -270,11 +270,11 @@ namespace bingRewards
                 return;
             }
 
-            if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
-                return;
-
             searchesLeftBox.Text = countDown.ToString();
             accountBox.Text = username;
+
+            //if (!webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+            //    return;
 
             if (countDown == 0)
             {
