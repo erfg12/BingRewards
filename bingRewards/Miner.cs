@@ -188,7 +188,7 @@ namespace bingRewards
             }
             catch
             {
-                MessageBox.Show("caught error");
+                //MessageBox.Show("caught error");
                 startTimer.Enabled = false;
                 startBtn.Enabled = true;
                 if (Convert.ToInt32(Properties.Settings.Default.autoclose) >= 1)
@@ -299,11 +299,17 @@ namespace bingRewards
             ReadAccounts(accountNum); //load in the accounts data first, then browse to cookie destroyer. This will trigger the start.
             //webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
 
-
-            string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
-            foreach (string currentFile in theCookies)
+            try
             {
-                System.IO.File.Delete(currentFile);
+                string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
+                foreach (string currentFile in theCookies)
+                {
+                    System.IO.File.Delete(currentFile);
+                }
+            }
+            catch
+            {
+                //happens sometimes on first bootup
             }
 
             webBrowser1.Document.Window.Navigate(new Uri("https://login.live.com/logout.srf"));
