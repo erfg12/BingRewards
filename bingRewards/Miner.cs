@@ -236,7 +236,7 @@ namespace bingRewards
             {
                 foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
                 {
-                    if (HtmlElement1.GetAttribute("name") == "login")
+                    if (HtmlElement1.GetAttribute("name") == "loginfmt")
                         HtmlElement1.SetAttribute("value", username);
                     if (HtmlElement1.GetAttribute("name") == "passwd")
                         HtmlElement1.SetAttribute("value", password);
