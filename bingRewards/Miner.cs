@@ -351,7 +351,7 @@ namespace bingRewards
 
         private void forumsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://newagesoldier.com/forum/viewforum.php?f=4");
+            System.Diagnostics.Process.Start("https://newagesoldier.com/forum");
         }
 
         private void softwareInformationToolStripMenuItem_Click(object sender, EventArgs e)

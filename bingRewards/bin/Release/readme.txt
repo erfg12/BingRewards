@@ -3,8 +3,6 @@ Website: newagesoldier.com
 
 How To Use
 ==========
-This program uses the web browser control from visual studios.
-
 It will use internet explorer settings. If you have viruses or malware
 on your PC, this program may not function correctly. Be sure you have
 a working copy of Internet Explorer.
@@ -45,8 +43,8 @@ searchspeedmin 	-> Search randimization in milliseconds. Lowest number.
 searchspeedmax 	-> Search randimization in milliseconds. Highest number.
 autostart 	-> Start searching when the program starts executing. 0=off 1=on.
 hidebrowser 	-> Hides the browser window. Can be useful if you hear clicking noises.
-mobilesearches 	-> How many times show this program do searches on Bing mobile?
-desktopsearches -> How many times show this program do searches on Bing desktop?
+mobilesearches 	-> How many times should this program do searches on Bing mobile?
+desktopsearches -> How many times should this program do searches on Bing desktop?
 autoclose 	-> After all accounts are done searching and the program finishes, should it close after 30 seconds? 0=off 1=on.
 startminimized 	-> Start program minimized. Useful if program is setup on task scheduler.
 searchtype 	-> Bing search types. image,video,map,news,explore or normal.
