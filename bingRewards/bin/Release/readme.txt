@@ -7,7 +7,9 @@ It will use internet explorer settings. If you have viruses or malware
 on your PC, this program may not function correctly. Be sure you have
 a working copy of Internet Explorer.
 
-For Windows XP users, be sure you accept all cookies on Internet Explorer.
+- Windows XP users, be sure you accept all cookies on Internet Explorer.
+- Windows 10 requires “Always allow session cookies”
+  - Control Panel > Internet Options > Privacy (tab) > Advanced (button)
 
 Step 1) Open accounts.txt with notepad and type in your windows live 
 account email/password credentials. One account per line.
