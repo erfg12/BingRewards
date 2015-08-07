@@ -3,11 +3,12 @@ Website: newagesoldier.com
 
 How To Use
 ==========
-It will use internet explorer settings. If you have viruses or malware
-on your PC, this program may not function correctly. Be sure you have
-a working copy of Internet Explorer.
+It will use internet explorer (or Microsoft Edge) settings. If you have viruses or malware
+on your PC, this program may not function correctly.
 
-- Windows XP users, be sure you accept all cookies on Internet Explorer.
+- Windows XP requires .net framework v4 and Enable All Cookies in IE.
+  - http://www.microsoft.com/en-us/download/details.aspx?id=17851
+  
 - Windows 10 requires “Always allow session cookies”
   - Control Panel > Internet Options > Privacy (tab) > Advanced (button)
 
