@@ -62,10 +62,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.stopBtn = new System.Windows.Forms.Button();
             this.dashboardWait = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.browseBingStoreWithAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -76,8 +79,9 @@
             this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Size = new System.Drawing.Size(962, 706);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://newagesoldier.com/", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            this.webBrowser1.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser1_Navigating);
             this.webBrowser1.ProgressChanged += new System.Windows.Forms.WebBrowserProgressChangedEventHandler(this.webBrowser1_ProgressChanged);
             // 
             // label1
@@ -152,7 +156,8 @@
             // 
             // startBtn
             // 
-            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.ForeColor = System.Drawing.Color.ForestGreen;
             this.startBtn.Location = new System.Drawing.Point(1052, 30);
             this.startBtn.Name = "startBtn";
@@ -179,12 +184,14 @@
             // 
             // listBox1
             // 
-            this.listBox1.Enabled = false;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(188, 706);
             this.listBox1.TabIndex = 13;
+            this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.accounts_click);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.accounts_mousedown);
             // 
             // groupBox1
             // 
@@ -225,6 +232,7 @@
             this.webBrowser2.Size = new System.Drawing.Size(260, 760);
             this.webBrowser2.TabIndex = 0;
             this.webBrowser2.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
+            this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebDocumentCompleted2);
             // 
             // statusStrip1
             // 
@@ -336,7 +344,8 @@
             // stopBtn
             // 
             this.stopBtn.Enabled = false;
-            this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopBtn.ForeColor = System.Drawing.Color.Red;
             this.stopBtn.Location = new System.Drawing.Point(1125, 30);
             this.stopBtn.Name = "stopBtn";
@@ -350,6 +359,20 @@
             // 
             this.dashboardWait.Interval = 5000;
             this.dashboardWait.Tick += new System.EventHandler(this.dashboardWait_Tick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.browseBingStoreWithAccountToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(246, 26);
+            // 
+            // browseBingStoreWithAccountToolStripMenuItem
+            // 
+            this.browseBingStoreWithAccountToolStripMenuItem.Name = "browseBingStoreWithAccountToolStripMenuItem";
+            this.browseBingStoreWithAccountToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.browseBingStoreWithAccountToolStripMenuItem.Text = "Browse Bing Store With Account";
+            this.browseBingStoreWithAccountToolStripMenuItem.Click += new System.EventHandler(this.browseBingStoreWithAccountToolStripMenuItem_Click);
             // 
             // Miner
             // 
@@ -384,6 +407,7 @@
             this.panel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,7 +428,6 @@
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.TextBox notesBox;
         private System.Windows.Forms.Timer stuckTimer;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
@@ -423,6 +446,9 @@
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutThisSoftwareToolStripMenuItem;
         private System.Windows.Forms.Timer dashboardWait;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem browseBingStoreWithAccountToolStripMenuItem;
+        public System.Windows.Forms.ListBox listBox1;
     }
 }
 

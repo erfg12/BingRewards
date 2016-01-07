@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Collections;
 using System.Globalization;
 using System.Web;
+using System.Net;
 
 namespace bingRewards
 {
@@ -19,23 +20,48 @@ namespace bingRewards
     {
         private string username;
         private string password;
+        private string proxy;
+        private string port;
         private int countDown = Properties.Settings.Default.desktopsearches;
         private int accountNum = 0;
         private bool mobile = false; //start with desktop
         string wordsFile = Application.StartupPath + Path.DirectorySeparatorChar + "words.txt";
         string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
+        public int selectedAcc = 0;
 
         public Miner()
         {
             InitializeComponent();
         }
 
+        [DllImport("wininet.dll")]
+        static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
+
+        public struct Struct_INTERNET_PROXY_INFO
+        {
+            public int dwAccessType;
+            public IntPtr proxy;
+            public IntPtr proxyBypass;
+        }
+
+        void RefreshIESettings(string strProxy)
+        {
+            const int INTERNET_OPTION_PROXY = 38;
+            const int INTERNET_OPEN_TYPE_PROXY = 3;
+            Struct_INTERNET_PROXY_INFO s_IPI;
+            s_IPI.dwAccessType = INTERNET_OPEN_TYPE_PROXY;
+            s_IPI.proxy = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(strProxy);
+            s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
+            IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+            System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
+            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+        }
+
         private void Miner_Load(object sender, EventArgs e)
         {
-            webBrowser2.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebDocumentCompleted2);
             if (Convert.ToInt32(Properties.Settings.Default.startminimized) >= 1)
                 this.WindowState = FormWindowState.Minimized;
-            webBrowser1.ScriptErrorsSuppressed = true;
+
             fileCheck();
 
             if (Properties.Settings.Default.startspeed > 60000) //anything faster than this is too slow
@@ -185,6 +211,16 @@ namespace bingRewards
                 startBtn.Enabled = false;
                 username = words[0];
                 password = words[1];
+                if (words[2] != null)
+                    proxy = words[2];
+                else
+                    proxy = ""; //reset our proxy
+                if (words[3] != null)
+                    port = words[3];
+                else
+                    port = ""; //reset our port
+                if (words[2] != null && words[3] != null)
+                    RefreshIESettings(proxy + ":" + port); //set our proxy before doing anything else
             }
             catch
             {
@@ -224,14 +260,16 @@ namespace bingRewards
 
         private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
-            notesBox.Text = webBrowser1.Url.ToString();
+            if (webBrowser1.Url == null)
+                notesBox.Text = "(BLANK)";
+            else
+                notesBox.Text = webBrowser1.Url.ToString();
             stuckTimer.Enabled = true;
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             stuckTimer.Enabled = false;
-
             if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
             {
                 foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
@@ -309,13 +347,25 @@ namespace bingRewards
             }
             catch
             {
-                //happens sometimes on first bootup
+                MessageBox.Show("error deleting cookies");
             }
 
-            webBrowser1.Document.Window.Navigate(new Uri("https://login.live.com/logout.srf"));
-            countDown = Properties.Settings.Default.desktopsearches;
-            accountNum = accountNum + 1; //next account
-            startTimer.Enabled = false;
+            try
+            {
+                webBrowser1.Document.Window.Navigate(new Uri("https://login.live.com/logout.srf"));
+                countDown = Properties.Settings.Default.desktopsearches;
+            } catch
+            {
+                MessageBox.Show("error logging out");
+            }
+
+            try {
+                accountNum = accountNum + 1; //next account
+                startTimer.Enabled = false;
+            } catch
+            {
+                MessageBox.Show("unknown error");
+            }
         }
 
         private void searchTimer_Tick(object sender, EventArgs e)
@@ -382,6 +432,42 @@ namespace bingRewards
         {
             searchTimer.Enabled = true;
             dashboardWait.Enabled = false;
+        }
+
+        private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+
+        }
+
+        private void accounts_click(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void accounts_mousedown(object sender, MouseEventArgs e)
+        {
+            if (startBtn.Enabled == false)
+                return; //currently running bot, dont allow right click
+
+            if (e.Button == MouseButtons.Right)
+            {
+                listBox1.SelectedIndex = listBox1.IndexFromPoint(e.Location);
+                if (listBox1.SelectedIndex != -1)
+                    contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+
+        private void browseBingStoreWithAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            store storeForm = new store(selectedAcc);
+            storeForm.Show();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+                selectedAcc = listBox1.SelectedIndex;
+            //MessageBox.Show(listBox1.SelectedIndex.ToString() + "/" + selectedAcc.ToString());
         }
     }
 }

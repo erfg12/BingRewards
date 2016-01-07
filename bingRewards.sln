@@ -1,8 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+Microsoft Visual Studio Solution File, Format Version 14.00
+# Visual Studio 2015
 VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
+MinimumVisualStudioVersion = 12.0.30501.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bingRewards", "bingRewards\bingRewards.csproj", "{368081AC-18A6-4766-BA96-258798E6FDF6}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "bingRewards Setup", "bingRewards Setup\bingRewards Setup.vdproj", "{0EC09811-BDE2-42AC-AE55-11218E3C46B0}"
