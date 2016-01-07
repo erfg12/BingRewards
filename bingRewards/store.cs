@@ -72,7 +72,7 @@ namespace bingRewards
                     //store url = http://www.bing.com/rewards/redeem/shop
                     //HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard");
                     RefreshIESettings(proxy + ":" + port);
-                    webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"/*https://www.google.com/search?q=what+is+my+ip&oq=what+is+my+ip"*/));
+                    webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"/*https://www.google.com/search?q=what+is+my+ip&oq=what+is+my+ip"*/), null, null, "User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 }
                 else
                     MessageBox.Show("ERROR: Couldn't locate account in accounts.txt file.");

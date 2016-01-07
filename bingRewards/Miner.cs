@@ -252,7 +252,7 @@ namespace bingRewards
             if (mobile)
                 webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3");
             else
-                webBrowser1.Navigate(searchURL + query, null, null, "");
+                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
 
             if (webBrowser1.Url.ToString().Contains(@"?q="))
                 countDown = countDown - 1;
