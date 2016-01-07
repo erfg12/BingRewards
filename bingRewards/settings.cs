@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -36,8 +37,10 @@ namespace bingRewards
             startminimizedBox.DropDownStyle = ComboBoxStyle.DropDownList;
             searchtypeBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            accountsBox.Text = System.IO.File.ReadAllText("accounts.txt");
-            searchWordsBox.Text = System.IO.File.ReadAllText("words.txt");
+            if (File.Exists(Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt"))
+                accountsBox.Text = System.IO.File.ReadAllText(Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt");
+            if (File.Exists(Application.StartupPath + Path.DirectorySeparatorChar + "words.txt"))
+                searchWordsBox.Text = System.IO.File.ReadAllText(Application.StartupPath + Path.DirectorySeparatorChar + "words.txt");
             
             startspeedBox.Text = Properties.Settings.Default.startspeed.ToString();
             searchspeedminBox.Text = Properties.Settings.Default.searchspeedmin.ToString();
