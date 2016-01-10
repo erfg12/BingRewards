@@ -53,8 +53,11 @@ namespace bingRewards
             s_IPI.proxy = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(strProxy);
             s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
             IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+            InternetSetOption(IntPtr.Zero, 81, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // clear cookies
+            InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache
+            InternetSetOption(IntPtr.Zero, 1, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // allow all cookies
             System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
-            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
         }
 
         private void Miner_Load(object sender, EventArgs e)

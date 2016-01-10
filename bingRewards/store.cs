@@ -40,18 +40,21 @@ namespace bingRewards
             s_IPI.proxy = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(strProxy);
             s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
             IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+            InternetSetOption(IntPtr.Zero, 81, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // clear cookies
+            InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache
+            InternetSetOption(IntPtr.Zero, 1, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // allow all cookies
             System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
-            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            webBrowser1.GoBack();
+            dashboardBrowser.GoBack();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser1.GoForward();
+            dashboardBrowser.GoForward();
         }
 
         string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
@@ -72,7 +75,7 @@ namespace bingRewards
                     //store url = http://www.bing.com/rewards/redeem/shop
                     //HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard");
                     RefreshIESettings(proxy + ":" + port);
-                    webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"/*https://www.google.com/search?q=what+is+my+ip&oq=what+is+my+ip"*/), null, null, "User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                    dashboardBrowser.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"/*https://www.google.com/search?q=what+is+my+ip&oq=what+is+my+ip"*/), null, null, "User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 }
                 else
                     MessageBox.Show("ERROR: Couldn't locate account in accounts.txt file.");
@@ -123,12 +126,12 @@ namespace bingRewards
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (webBrowser1.Url != null)
-                webAddressBox.Text = webBrowser1.Url.ToString();
+            if (dashboardBrowser.Url != null)
+                webAddressBox.Text = dashboardBrowser.Url.ToString();
 
-            if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
+            if (dashboardBrowser.Url.ToString().Contains(@"login.live.com/login"))
             {
-                foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
+                foreach (HtmlElement HtmlElement1 in dashboardBrowser.Document.Body.All) //Force post (login).
                 {
                     if (HtmlElement1.GetAttribute("name") == "loginfmt")
                         HtmlElement1.SetAttribute("value", username);
@@ -139,8 +142,13 @@ namespace bingRewards
                 }
             }
 
-            if (webBrowser1.Url.ToString().Equals(@"http://www.msn.com/") || webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard")) //done logging in
-                webBrowser1.Navigate(new Uri("http://www.bing.com/rewards/redeem/shop"));
+            //if (dashboardBrowser.Url.ToString().Equals(@"http://www.msn.com/") || dashboardBrowser.Url.ToString().Contains(@"bing.com/rewards/dashboard")) //done logging in
+            //    dashboardBrowser.Navigate(new Uri("http://www.bing.com/rewards/redeem/shop"));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dashboardBrowser.Navigate(new Uri(webAddressBox.Text));
         }
     }
 }

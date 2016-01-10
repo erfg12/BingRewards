@@ -365,13 +365,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.browseBingStoreWithAccountToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(246, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 48);
             // 
             // browseBingStoreWithAccountToolStripMenuItem
             // 
             this.browseBingStoreWithAccountToolStripMenuItem.Name = "browseBingStoreWithAccountToolStripMenuItem";
-            this.browseBingStoreWithAccountToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.browseBingStoreWithAccountToolStripMenuItem.Text = "Browse Bing Store With Account";
+            this.browseBingStoreWithAccountToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.browseBingStoreWithAccountToolStripMenuItem.Text = "Go To Dashboard With Account";
             this.browseBingStoreWithAccountToolStripMenuItem.Click += new System.EventHandler(this.browseBingStoreWithAccountToolStripMenuItem_Click);
             // 
             // Miner
