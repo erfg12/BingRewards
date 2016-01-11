@@ -30,13 +30,15 @@
         {
             this.dashboardBrowser = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.proxyBox = new System.Windows.Forms.TextBox();
             this.curAccount = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
             this.webAddressBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dashboardBrowser
@@ -48,27 +50,36 @@
             this.dashboardBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.dashboardBrowser.Name = "dashboardBrowser";
             this.dashboardBrowser.ScriptErrorsSuppressed = true;
-            this.dashboardBrowser.Size = new System.Drawing.Size(854, 579);
+            this.dashboardBrowser.Size = new System.Drawing.Size(937, 579);
             this.dashboardBrowser.TabIndex = 0;
             this.dashboardBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            this.dashboardBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser1_NewWindow);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.proxyBox);
             this.panel1.Controls.Add(this.curAccount);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.backBtn);
-            this.panel1.Controls.Add(this.webAddressBox);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(854, 26);
+            this.panel1.Size = new System.Drawing.Size(363, 26);
             this.panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(537, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 22);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "GO";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // proxyBox
             // 
             this.proxyBox.Enabled = false;
-            this.proxyBox.Location = new System.Drawing.Point(240, 0);
+            this.proxyBox.Location = new System.Drawing.Point(240, 3);
             this.proxyBox.Name = "proxyBox";
             this.proxyBox.Size = new System.Drawing.Size(117, 20);
             this.proxyBox.TabIndex = 4;
@@ -76,7 +87,7 @@
             // curAccount
             // 
             this.curAccount.Enabled = false;
-            this.curAccount.Location = new System.Drawing.Point(63, 0);
+            this.curAccount.Location = new System.Drawing.Point(63, 3);
             this.curAccount.Name = "curAccount";
             this.curAccount.Size = new System.Drawing.Size(171, 20);
             this.curAccount.TabIndex = 3;
@@ -107,36 +118,38 @@
             // 
             // webAddressBox
             // 
-            this.webAddressBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.webAddressBox.Enabled = false;
-            this.webAddressBox.Location = new System.Drawing.Point(363, 0);
+            this.webAddressBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.webAddressBox.Location = new System.Drawing.Point(2, 3);
             this.webAddressBox.Name = "webAddressBox";
-            this.webAddressBox.Size = new System.Drawing.Size(450, 20);
+            this.webAddressBox.Size = new System.Drawing.Size(529, 20);
             this.webAddressBox.TabIndex = 0;
             // 
-            // button2
+            // panel2
             // 
-            this.button2.Location = new System.Drawing.Point(819, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "GO";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.webAddressBox);
+            this.panel2.Location = new System.Drawing.Point(363, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(574, 26);
+            this.panel2.TabIndex = 2;
             // 
             // store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 606);
+            this.ClientSize = new System.Drawing.Size(937, 606);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dashboardBrowser);
             this.Name = "store";
             this.ShowIcon = false;
             this.Text = "WEB BROWSER";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.store_Closing);
             this.Load += new System.EventHandler(this.store_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -151,5 +164,6 @@
         private System.Windows.Forms.TextBox proxyBox;
         private System.Windows.Forms.TextBox curAccount;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel2;
     }
 }

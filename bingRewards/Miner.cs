@@ -52,12 +52,17 @@ namespace bingRewards
             s_IPI.dwAccessType = INTERNET_OPEN_TYPE_PROXY;
             s_IPI.proxy = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(strProxy);
             s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
+
             IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
-            InternetSetOption(IntPtr.Zero, 81, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // clear cookies
+            InternetSetOption(IntPtr.Zero, 81, intptrStruct, 0); // clear cookies
             //InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache (crashes in win10)
-            InternetSetOption(IntPtr.Zero, 1, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // allow all cookies
-            System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
-            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
+            InternetSetOption(IntPtr.Zero, 1, intptrStruct, 0); // allow all cookies
+
+            if (strProxy != ":") //if we have a proxy:port
+            {
+                System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
+                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
+            }
         }
 
         private void Miner_Load(object sender, EventArgs e)
@@ -214,16 +219,20 @@ namespace bingRewards
                 startBtn.Enabled = false;
                 username = words[0];
                 password = words[1];
-                if (words[2] != null)
+
+                int c = words.Length;
+                if (c > 2)
+                {
                     proxy = words[2];
-                else
-                    proxy = ""; //reset our proxy
-                if (words[3] != null)
                     port = words[3];
+                }
                 else
+                {
+                    proxy = ""; //reset our proxy
                     port = ""; //reset our port
-                if (words[2] != null && words[3] != null)
-                    RefreshIESettings(proxy + ":" + port); //set our proxy before doing anything else
+                }
+
+                RefreshIESettings(proxy + ":" + port); //set our proxy before doing anything else
             }
             catch
             {
@@ -337,9 +346,6 @@ namespace bingRewards
 
         private void startTimer_Tick(object sender, EventArgs e)
         {
-            ReadAccounts(accountNum); //load in the accounts data first, then browse to cookie destroyer. This will trigger the start.
-            //webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
-
             try
             {
                 string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
@@ -352,6 +358,9 @@ namespace bingRewards
             {
                 MessageBox.Show("error deleting cookies");
             }
+
+            ReadAccounts(accountNum); //load in the accounts data first, then browse to cookie destroyer. This will trigger the start.
+            //webBrowser1.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
 
             try
             {

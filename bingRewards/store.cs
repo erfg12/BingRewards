@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -33,18 +34,36 @@ namespace bingRewards
 
         void RefreshIESettings(string strProxy)
         {
+            try
+            {
+                string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
+                foreach (string currentFile in theCookies)
+                {
+                    System.IO.File.Delete(currentFile);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error deleting cookies");
+            }
+
             const int INTERNET_OPTION_PROXY = 38;
             const int INTERNET_OPEN_TYPE_PROXY = 3;
             Struct_INTERNET_PROXY_INFO s_IPI;
             s_IPI.dwAccessType = INTERNET_OPEN_TYPE_PROXY;
             s_IPI.proxy = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(strProxy);
             s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
+
             IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
-            InternetSetOption(IntPtr.Zero, 81, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // clear cookies
+            InternetSetOption(IntPtr.Zero, 81, intptrStruct, 0); // clear cookies
             //InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache (crashes in win10)
-            InternetSetOption(IntPtr.Zero, 1, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // allow all cookies
-            System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
-            InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
+            InternetSetOption(IntPtr.Zero, 1, intptrStruct, 0); // allow all cookies
+
+            if (strProxy != ":") //if we have a proxy:port
+            {
+                System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
+                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
+            }
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -74,6 +93,7 @@ namespace bingRewards
                 {
                     //store url = http://www.bing.com/rewards/redeem/shop
                     //HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard");
+                    //if (proxy != "" && port != "")
                     RefreshIESettings(proxy + ":" + port);
                     dashboardBrowser.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"/*https://www.google.com/search?q=what+is+my+ip&oq=what+is+my+ip"*/), null, null, "User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 }
@@ -104,22 +124,24 @@ namespace bingRewards
                 username = words[0];
                 curAccount.Text = username;
                 password = words[1];
-                if (words[2] != null)
+
+                int c = words.Length;
+                if (c > 2)
                 {
                     proxy = words[2];
                     proxyBox.Text = proxy;
+                    port = words[3];
                 }
                 else
+                {
                     proxy = ""; //reset our proxy
-                if (words[3] != null)
-                    port = words[3];
-                else
                     port = ""; //reset our port
+                }
                 return true;
             }
             catch
             {
-                //MessageBox.Show("caught error");
+                MessageBox.Show("caught error");
                 return false;
             }
         }
@@ -148,7 +170,24 @@ namespace bingRewards
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!webAddressBox.Text.Contains("http"))
+                webAddressBox.Text = "http://" + webAddressBox.Text;
             dashboardBrowser.Navigate(new Uri(webAddressBox.Text));
+        }
+
+        private void webBrowser1_NewWindow(object sender, CancelEventArgs e)
+        {
+            dashboardBrowser.Navigate(dashboardBrowser.StatusText);
+            e.Cancel = true;
+        }
+
+        private void store_Closing(object sender, FormClosingEventArgs e)
+        {
+            dashboardBrowser.Navigate(new Uri("https://login.live.com/logout.srf"));
+            while (dashboardBrowser.ReadyState != WebBrowserReadyState.Complete)
+            {
+                Application.DoEvents();
+            }
         }
     }
 }

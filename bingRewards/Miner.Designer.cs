@@ -53,7 +53,6 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.softwareInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutThisSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
@@ -77,7 +76,7 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(962, 583);
+            this.webBrowser1.Size = new System.Drawing.Size(676, 583);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -87,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(351, 36);
+            this.label1.Location = new System.Drawing.Point(290, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -96,7 +95,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(218, 36);
+            this.label2.Location = new System.Drawing.Point(165, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 2;
@@ -105,7 +104,7 @@
             // searchesLeftBox
             // 
             this.searchesLeftBox.Enabled = false;
-            this.searchesLeftBox.Location = new System.Drawing.Point(389, 33);
+            this.searchesLeftBox.Location = new System.Drawing.Point(323, 33);
             this.searchesLeftBox.Name = "searchesLeftBox";
             this.searchesLeftBox.Size = new System.Drawing.Size(47, 20);
             this.searchesLeftBox.TabIndex = 3;
@@ -113,7 +112,7 @@
             // searchModeBox
             // 
             this.searchModeBox.Enabled = false;
-            this.searchModeBox.Location = new System.Drawing.Point(254, 33);
+            this.searchModeBox.Location = new System.Drawing.Point(197, 33);
             this.searchModeBox.Name = "searchModeBox";
             this.searchModeBox.Size = new System.Drawing.Size(88, 20);
             this.searchModeBox.TabIndex = 4;
@@ -132,13 +131,13 @@
             this.accountBox.Enabled = false;
             this.accountBox.Location = new System.Drawing.Point(58, 33);
             this.accountBox.Name = "accountBox";
-            this.accountBox.Size = new System.Drawing.Size(149, 20);
+            this.accountBox.Size = new System.Drawing.Size(104, 20);
             this.accountBox.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(613, 35);
+            this.label3.Location = new System.Drawing.Point(533, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 7;
@@ -156,24 +155,25 @@
             // 
             // startBtn
             // 
+            this.startBtn.BackColor = System.Drawing.Color.Beige;
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.ForeColor = System.Drawing.Color.ForestGreen;
-            this.startBtn.Location = new System.Drawing.Point(1052, 30);
+            this.startBtn.Location = new System.Drawing.Point(861, 30);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(69, 23);
+            this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 11;
             this.startBtn.Text = "START";
-            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.UseVisualStyleBackColor = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // notesBox
             // 
             this.notesBox.Enabled = false;
-            this.notesBox.Location = new System.Drawing.Point(659, 32);
+            this.notesBox.Location = new System.Drawing.Point(577, 32);
             this.notesBox.Multiline = true;
             this.notesBox.Name = "notesBox";
-            this.notesBox.Size = new System.Drawing.Size(387, 21);
+            this.notesBox.Size = new System.Drawing.Size(280, 21);
             this.notesBox.TabIndex = 10;
             this.notesBox.Text = "(BLANK)";
             // 
@@ -187,7 +187,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(188, 576);
+            this.listBox1.Size = new System.Drawing.Size(144, 576);
             this.listBox1.TabIndex = 13;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.accounts_click);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -198,7 +198,7 @@
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Location = new System.Drawing.Point(7, 57);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 602);
+            this.groupBox1.Size = new System.Drawing.Size(155, 602);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounts";
@@ -206,9 +206,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.webBrowser1);
-            this.groupBox2.Location = new System.Drawing.Point(219, 57);
+            this.groupBox2.Location = new System.Drawing.Point(166, 57);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(974, 602);
+            this.groupBox2.Size = new System.Drawing.Size(691, 602);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Browser";
@@ -216,19 +216,19 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.webBrowser2);
-            this.panel1.Location = new System.Drawing.Point(1200, 28);
+            this.panel1.Location = new System.Drawing.Point(862, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 760);
+            this.panel1.Size = new System.Drawing.Size(149, 760);
             this.panel1.TabIndex = 16;
             // 
             // webBrowser2
             // 
-            this.webBrowser2.Location = new System.Drawing.Point(-1, -49);
+            this.webBrowser2.Location = new System.Drawing.Point(3, -47);
             this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser2.Name = "webBrowser2";
             this.webBrowser2.ScriptErrorsSuppressed = true;
             this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(153, 760);
+            this.webBrowser2.Size = new System.Drawing.Size(229, 760);
             this.webBrowser2.TabIndex = 0;
             this.webBrowser2.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
             this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebDocumentCompleted2);
@@ -242,7 +242,7 @@
             this.toolStripDropDownButton1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1375, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1013, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -269,7 +269,6 @@
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readmeToolStripMenuItem,
-            this.forumsToolStripMenuItem,
             this.softwareInformationToolStripMenuItem,
             this.aboutThisSoftwareToolStripMenuItem});
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -285,18 +284,11 @@
             this.readmeToolStripMenuItem.Text = "Readme";
             this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
             // 
-            // forumsToolStripMenuItem
-            // 
-            this.forumsToolStripMenuItem.Name = "forumsToolStripMenuItem";
-            this.forumsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.forumsToolStripMenuItem.Text = "Support Forums";
-            this.forumsToolStripMenuItem.Click += new System.EventHandler(this.forumsToolStripMenuItem_Click);
-            // 
             // softwareInformationToolStripMenuItem
             // 
             this.softwareInformationToolStripMenuItem.Name = "softwareInformationToolStripMenuItem";
-            this.softwareInformationToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.softwareInformationToolStripMenuItem.Text = "Software Information";
+            this.softwareInformationToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.softwareInformationToolStripMenuItem.Text = "NewAgeSoldier.com";
             this.softwareInformationToolStripMenuItem.Click += new System.EventHandler(this.softwareInformationToolStripMenuItem_Click);
             // 
             // aboutThisSoftwareToolStripMenuItem
@@ -309,7 +301,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(444, 36);
+            this.label4.Location = new System.Drawing.Point(373, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 18;
@@ -318,7 +310,7 @@
             // speedmin
             // 
             this.speedmin.Enabled = false;
-            this.speedmin.Location = new System.Drawing.Point(490, 33);
+            this.speedmin.Location = new System.Drawing.Point(416, 33);
             this.speedmin.Name = "speedmin";
             this.speedmin.Size = new System.Drawing.Size(54, 20);
             this.speedmin.TabIndex = 19;
@@ -326,7 +318,7 @@
             // speedmax
             // 
             this.speedmax.Enabled = false;
-            this.speedmax.Location = new System.Drawing.Point(554, 33);
+            this.speedmax.Location = new System.Drawing.Point(480, 33);
             this.speedmax.Name = "speedmax";
             this.speedmax.Size = new System.Drawing.Size(50, 20);
             this.speedmax.TabIndex = 20;
@@ -334,7 +326,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(544, 36);
+            this.label5.Location = new System.Drawing.Point(470, 36);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(10, 13);
             this.label5.TabIndex = 21;
@@ -342,16 +334,17 @@
             // 
             // stopBtn
             // 
+            this.stopBtn.BackColor = System.Drawing.Color.MistyRose;
             this.stopBtn.Enabled = false;
             this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopBtn.ForeColor = System.Drawing.Color.Red;
-            this.stopBtn.Location = new System.Drawing.Point(1125, 30);
+            this.stopBtn.Location = new System.Drawing.Point(942, 30);
             this.stopBtn.Name = "stopBtn";
-            this.stopBtn.Size = new System.Drawing.Size(69, 23);
+            this.stopBtn.Size = new System.Drawing.Size(68, 23);
             this.stopBtn.TabIndex = 22;
             this.stopBtn.Text = "STOP";
-            this.stopBtn.UseVisualStyleBackColor = true;
+            this.stopBtn.UseVisualStyleBackColor = false;
             this.stopBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // dashboardWait
@@ -377,7 +370,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 663);
+            this.ClientSize = new System.Drawing.Size(1013, 663);
             this.Controls.Add(this.stopBtn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.speedmax);
@@ -398,6 +391,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Miner";
             this.Text = "Bing Rewards Search Bot";
             this.Load += new System.EventHandler(this.Miner_Load);
@@ -438,7 +432,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem readmeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forumsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem softwareInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;

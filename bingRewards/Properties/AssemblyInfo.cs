@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("bingRewards")]
-[assembly: AssemblyDescription("Bing rewards mining program")]
+[assembly: AssemblyDescription("Bing Search Bot")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("New Age Soldier")]
 [assembly: AssemblyProduct("Bing Rewards Search Bot")]
-[assembly: AssemblyCopyright("2015")]
+[assembly: AssemblyCopyright("Jacob Fliss ©2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.3")]
-[assembly: AssemblyFileVersion("1.0.3")]
+[assembly: AssemblyVersion("1.1.0")]
+[assembly: AssemblyFileVersion("1.1.0")]
