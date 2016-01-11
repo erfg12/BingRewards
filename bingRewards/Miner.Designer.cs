@@ -77,7 +77,7 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(962, 706);
+            this.webBrowser1.Size = new System.Drawing.Size(962, 583);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -187,7 +187,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(188, 706);
+            this.listBox1.Size = new System.Drawing.Size(188, 576);
             this.listBox1.TabIndex = 13;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.accounts_click);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -198,7 +198,7 @@
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Location = new System.Drawing.Point(7, 57);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 731);
+            this.groupBox1.Size = new System.Drawing.Size(200, 602);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounts";
@@ -208,7 +208,7 @@
             this.groupBox2.Controls.Add(this.webBrowser1);
             this.groupBox2.Location = new System.Drawing.Point(219, 57);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(974, 731);
+            this.groupBox2.Size = new System.Drawing.Size(974, 602);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Browser";
@@ -218,18 +218,17 @@
             this.panel1.Controls.Add(this.webBrowser2);
             this.panel1.Location = new System.Drawing.Point(1200, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 760);
+            this.panel1.Size = new System.Drawing.Size(171, 760);
             this.panel1.TabIndex = 16;
             // 
             // webBrowser2
             // 
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser2.Location = new System.Drawing.Point(-1, -49);
             this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser2.Name = "webBrowser2";
             this.webBrowser2.ScriptErrorsSuppressed = true;
             this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(260, 760);
+            this.webBrowser2.Size = new System.Drawing.Size(153, 760);
             this.webBrowser2.TabIndex = 0;
             this.webBrowser2.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
             this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebDocumentCompleted2);
@@ -243,7 +242,7 @@
             this.toolStripDropDownButton1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1472, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1375, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -365,7 +364,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.browseBingStoreWithAccountToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 26);
             // 
             // browseBingStoreWithAccountToolStripMenuItem
             // 
@@ -378,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1472, 798);
+            this.ClientSize = new System.Drawing.Size(1375, 663);
             this.Controls.Add(this.stopBtn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.speedmax);

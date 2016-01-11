@@ -54,7 +54,7 @@ namespace bingRewards
             s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
             IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
             InternetSetOption(IntPtr.Zero, 81, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // clear cookies
-            InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache
+            //InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache (crashes in win10)
             InternetSetOption(IntPtr.Zero, 1, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // allow all cookies
             System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
             InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
@@ -394,7 +394,7 @@ namespace bingRewards
 
         void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            webBrowser2.Document.Window.ScrollTo(0, 9999);
+            webBrowser2.Document.Window.ScrollTo(200, 9999);
         }
 
         private void readmeToolStripMenuItem_Click(object sender, EventArgs e)
