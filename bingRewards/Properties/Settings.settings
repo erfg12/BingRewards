@@ -32,5 +32,8 @@
     <Setting Name="searchtype" Type="System.String" Scope="User">
       <Value Profile="(Default)">normal</Value>
     </Setting>
+    <Setting Name="singleSearch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

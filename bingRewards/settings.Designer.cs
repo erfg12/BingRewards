@@ -56,11 +56,12 @@
             this.accountsBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.searchWordsBox = new System.Windows.Forms.TextBox();
+            this.randSentences = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // startspeedBox
             // 
-            this.startspeedBox.Location = new System.Drawing.Point(137, 13);
+            this.startspeedBox.Location = new System.Drawing.Point(153, 13);
             this.startspeedBox.Name = "startspeedBox";
             this.startspeedBox.Size = new System.Drawing.Size(149, 20);
             this.startspeedBox.TabIndex = 0;
@@ -68,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 16);
+            this.label1.Location = new System.Drawing.Point(84, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 1;
@@ -77,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(28, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 13);
             this.label2.TabIndex = 3;
@@ -85,7 +86,7 @@
             // 
             // searchspeedminBox
             // 
-            this.searchspeedminBox.Location = new System.Drawing.Point(137, 39);
+            this.searchspeedminBox.Location = new System.Drawing.Point(153, 39);
             this.searchspeedminBox.Name = "searchspeedminBox";
             this.searchspeedminBox.Size = new System.Drawing.Size(149, 20);
             this.searchspeedminBox.TabIndex = 2;
@@ -93,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 68);
+            this.label3.Location = new System.Drawing.Point(28, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 13);
             this.label3.TabIndex = 5;
@@ -101,7 +102,7 @@
             // 
             // searchspeedmaxBox
             // 
-            this.searchspeedmaxBox.Location = new System.Drawing.Point(137, 65);
+            this.searchspeedmaxBox.Location = new System.Drawing.Point(153, 65);
             this.searchspeedmaxBox.Name = "searchspeedmaxBox";
             this.searchspeedmaxBox.Size = new System.Drawing.Size(149, 20);
             this.searchspeedmaxBox.TabIndex = 4;
@@ -109,7 +110,7 @@
             // autostart
             // 
             this.autostart.AutoSize = true;
-            this.autostart.Location = new System.Drawing.Point(77, 94);
+            this.autostart.Location = new System.Drawing.Point(93, 94);
             this.autostart.Name = "autostart";
             this.autostart.Size = new System.Drawing.Size(54, 13);
             this.autostart.TabIndex = 7;
@@ -121,7 +122,7 @@
             this.autostartBox.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.autostartBox.Location = new System.Drawing.Point(137, 91);
+            this.autostartBox.Location = new System.Drawing.Point(153, 91);
             this.autostartBox.Name = "autostartBox";
             this.autostartBox.Size = new System.Drawing.Size(149, 21);
             this.autostartBox.TabIndex = 8;
@@ -132,7 +133,7 @@
             this.hidebrowserBox.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.hidebrowserBox.Location = new System.Drawing.Point(137, 118);
+            this.hidebrowserBox.Location = new System.Drawing.Point(153, 118);
             this.hidebrowserBox.Name = "hidebrowserBox";
             this.hidebrowserBox.Size = new System.Drawing.Size(149, 21);
             this.hidebrowserBox.TabIndex = 10;
@@ -140,7 +141,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 121);
+            this.label4.Location = new System.Drawing.Point(77, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 9;
@@ -149,7 +150,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 148);
+            this.label5.Location = new System.Drawing.Point(30, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 13);
             this.label5.TabIndex = 12;
@@ -157,7 +158,7 @@
             // 
             // mobilesearchesBox
             // 
-            this.mobilesearchesBox.Location = new System.Drawing.Point(137, 145);
+            this.mobilesearchesBox.Location = new System.Drawing.Point(153, 145);
             this.mobilesearchesBox.Name = "mobilesearchesBox";
             this.mobilesearchesBox.Size = new System.Drawing.Size(149, 20);
             this.mobilesearchesBox.TabIndex = 11;
@@ -166,7 +167,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 174);
+            this.label6.Location = new System.Drawing.Point(21, 174);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(126, 13);
             this.label6.TabIndex = 14;
@@ -174,7 +175,7 @@
             // 
             // desktopsearchesBox
             // 
-            this.desktopsearchesBox.Location = new System.Drawing.Point(137, 171);
+            this.desktopsearchesBox.Location = new System.Drawing.Point(153, 171);
             this.desktopsearchesBox.Name = "desktopsearchesBox";
             this.desktopsearchesBox.Size = new System.Drawing.Size(149, 20);
             this.desktopsearchesBox.TabIndex = 13;
@@ -185,7 +186,7 @@
             this.autocloseBox.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.autocloseBox.Location = new System.Drawing.Point(137, 197);
+            this.autocloseBox.Location = new System.Drawing.Point(153, 197);
             this.autocloseBox.Name = "autocloseBox";
             this.autocloseBox.Size = new System.Drawing.Size(149, 21);
             this.autocloseBox.TabIndex = 16;
@@ -193,7 +194,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(73, 200);
+            this.label7.Location = new System.Drawing.Point(89, 200);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 15;
@@ -205,7 +206,7 @@
             this.startminimizedBox.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.startminimizedBox.Location = new System.Drawing.Point(137, 224);
+            this.startminimizedBox.Location = new System.Drawing.Point(153, 224);
             this.startminimizedBox.Name = "startminimizedBox";
             this.startminimizedBox.Size = new System.Drawing.Size(149, 21);
             this.startminimizedBox.TabIndex = 18;
@@ -213,7 +214,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 227);
+            this.label8.Location = new System.Drawing.Point(69, 227);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 17;
@@ -229,7 +230,7 @@
             "maps",
             "news",
             "explore"});
-            this.searchtypeBox.Location = new System.Drawing.Point(137, 251);
+            this.searchtypeBox.Location = new System.Drawing.Point(153, 251);
             this.searchtypeBox.Name = "searchtypeBox";
             this.searchtypeBox.Size = new System.Drawing.Size(149, 21);
             this.searchtypeBox.TabIndex = 20;
@@ -237,7 +238,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(63, 254);
+            this.label9.Location = new System.Drawing.Point(79, 254);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 19;
@@ -247,7 +248,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(137, 279);
+            this.button1.Location = new System.Drawing.Point(153, 304);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 35);
             this.button1.TabIndex = 21;
@@ -259,7 +260,7 @@
             // 
             this.defaultsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.defaultsBtn.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.defaultsBtn.Location = new System.Drawing.Point(55, 279);
+            this.defaultsBtn.Location = new System.Drawing.Point(71, 304);
             this.defaultsBtn.Name = "defaultsBtn";
             this.defaultsBtn.Size = new System.Drawing.Size(76, 35);
             this.defaultsBtn.TabIndex = 22;
@@ -272,7 +273,7 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(5, 323);
+            this.textBox1.Location = new System.Drawing.Point(21, 347);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(285, 23);
@@ -284,7 +285,7 @@
             // 
             this.accountsLabel.AutoSize = true;
             this.accountsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountsLabel.Location = new System.Drawing.Point(371, 13);
+            this.accountsLabel.Location = new System.Drawing.Point(387, 13);
             this.accountsLabel.Name = "accountsLabel";
             this.accountsLabel.Size = new System.Drawing.Size(137, 20);
             this.accountsLabel.TabIndex = 25;
@@ -292,18 +293,18 @@
             // 
             // accountsBox
             // 
-            this.accountsBox.Location = new System.Drawing.Point(293, 39);
+            this.accountsBox.Location = new System.Drawing.Point(309, 39);
             this.accountsBox.Multiline = true;
             this.accountsBox.Name = "accountsBox";
             this.accountsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.accountsBox.Size = new System.Drawing.Size(307, 307);
+            this.accountsBox.Size = new System.Drawing.Size(307, 323);
             this.accountsBox.TabIndex = 26;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(687, 16);
+            this.label10.Location = new System.Drawing.Point(703, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(143, 20);
             this.label10.TabIndex = 27;
@@ -311,18 +312,30 @@
             // 
             // searchWordsBox
             // 
-            this.searchWordsBox.Location = new System.Drawing.Point(606, 39);
+            this.searchWordsBox.Location = new System.Drawing.Point(622, 39);
             this.searchWordsBox.Multiline = true;
             this.searchWordsBox.Name = "searchWordsBox";
             this.searchWordsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.searchWordsBox.Size = new System.Drawing.Size(307, 307);
+            this.searchWordsBox.Size = new System.Drawing.Size(307, 323);
             this.searchWordsBox.TabIndex = 28;
+            // 
+            // randSentences
+            // 
+            this.randSentences.AutoSize = true;
+            this.randSentences.Location = new System.Drawing.Point(9, 281);
+            this.randSentences.Name = "randSentences";
+            this.randSentences.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.randSentences.Size = new System.Drawing.Size(158, 17);
+            this.randSentences.TabIndex = 30;
+            this.randSentences.Text = "Disable Random Sentences";
+            this.randSentences.UseVisualStyleBackColor = true;
             // 
             // settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 350);
+            this.ClientSize = new System.Drawing.Size(942, 376);
+            this.Controls.Add(this.randSentences);
             this.Controls.Add(this.searchWordsBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.accountsBox);
@@ -391,5 +404,6 @@
         private System.Windows.Forms.TextBox accountsBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox searchWordsBox;
+        private System.Windows.Forms.CheckBox randSentences;
     }
 }

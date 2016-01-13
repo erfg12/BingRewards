@@ -34,6 +34,8 @@ namespace bingRewards
 
         void RefreshIESettings(string strProxy)
         {
+            WebBrowserHelper.ClearCache();
+
             try
             {
                 string[] theCookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));

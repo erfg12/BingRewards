@@ -52,6 +52,7 @@ namespace bingRewards
             autocloseBox.Text = Properties.Settings.Default.autoclose.ToString();
             startminimizedBox.Text = Properties.Settings.Default.startminimized.ToString();
             searchtypeBox.Text = Properties.Settings.Default.searchtype;
+            randSentences.Checked = Properties.Settings.Default.singleSearch;
         }
 
         private void defaultsBtn_Click(object sender, EventArgs e)
@@ -80,6 +81,7 @@ namespace bingRewards
             Properties.Settings.Default.autoclose = Convert.ToBoolean(autocloseBox.Text);
             Properties.Settings.Default.startminimized = Convert.ToBoolean(startminimizedBox.Text);
             Properties.Settings.Default.searchtype = searchtypeBox.Text;
+            Properties.Settings.Default.singleSearch = Convert.ToBoolean(randSentences.Checked);
             Properties.Settings.Default.Save();
 
             System.IO.File.WriteAllText("accounts.txt", accountsBox.Text);

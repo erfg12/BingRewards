@@ -46,6 +46,7 @@ namespace bingRewards
 
         void RefreshIESettings(string strProxy)
         {
+            WebBrowserHelper.ClearCache();
             const int INTERNET_OPTION_PROXY = 38;
             const int INTERNET_OPEN_TYPE_PROXY = 3;
             Struct_INTERNET_PROXY_INFO s_IPI;
@@ -173,23 +174,30 @@ namespace bingRewards
         {
             Random rnd = new Random();
             string[] words = System.IO.File.ReadAllLines(wordsFile);
+            bool singleSearch = false;
+
+            try { singleSearch = Properties.Settings.Default.singleSearch; } catch { }
 
             StringBuilder builder = new StringBuilder();
 
-            for (int i = 0; i < wordCount; i++)
+            if (!singleSearch)
             {
-                // Select a random word from the array
-                builder.Append(words[rnd.Next(words.Length)]).Append(" ");
-            }
+                for (int i = 0; i < wordCount; i++)
+                {
+                    // Select a random word from the array
+                    builder.Append(words[rnd.Next(words.Length)]).Append(" ");
+                }
 
-            string sentence = builder.ToString().Trim();
+                string sentence = builder.ToString().Trim();
 
-            // Set the first letter of the first word in the sentenece to uppercase
-            if (wordCount >= 4)
-                sentence = char.ToUpper(sentence[0]) + sentence.Substring(1) + ".";
+                // Set the first letter of the first word in the sentenece to uppercase
+                if (wordCount >= 4)
+                    sentence = char.ToUpper(sentence[0]) + sentence.Substring(1) + ".";
 
-            builder = new StringBuilder();
-            builder.Append(sentence);
+                builder = new StringBuilder();
+                builder.Append(sentence);
+            } else
+                builder.Append(words[rnd.Next(words.Length)]); //just read 1 line
 
             return builder.ToString();
         }
