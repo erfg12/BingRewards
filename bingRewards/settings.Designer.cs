@@ -285,7 +285,7 @@
             // 
             this.accountsLabel.AutoSize = true;
             this.accountsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountsLabel.Location = new System.Drawing.Point(387, 13);
+            this.accountsLabel.Location = new System.Drawing.Point(308, 13);
             this.accountsLabel.Name = "accountsLabel";
             this.accountsLabel.Size = new System.Drawing.Size(137, 20);
             this.accountsLabel.TabIndex = 25;
@@ -297,14 +297,14 @@
             this.accountsBox.Multiline = true;
             this.accountsBox.Name = "accountsBox";
             this.accountsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.accountsBox.Size = new System.Drawing.Size(307, 323);
+            this.accountsBox.Size = new System.Drawing.Size(397, 323);
             this.accountsBox.TabIndex = 26;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(703, 16);
+            this.label10.Location = new System.Drawing.Point(710, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(143, 20);
             this.label10.TabIndex = 27;
@@ -312,7 +312,7 @@
             // 
             // searchWordsBox
             // 
-            this.searchWordsBox.Location = new System.Drawing.Point(622, 39);
+            this.searchWordsBox.Location = new System.Drawing.Point(712, 39);
             this.searchWordsBox.Multiline = true;
             this.searchWordsBox.Name = "searchWordsBox";
             this.searchWordsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -334,7 +334,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 376);
+            this.ClientSize = new System.Drawing.Size(1031, 376);
             this.Controls.Add(this.randSentences);
             this.Controls.Add(this.searchWordsBox);
             this.Controls.Add(this.label10);

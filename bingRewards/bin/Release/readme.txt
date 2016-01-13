@@ -1,4 +1,4 @@
-Created by NeWaGe
+Created by the New Age Soldier
 Website: newagesoldier.com
 
 How To Use
@@ -9,16 +9,19 @@ on your PC, this program may not function correctly.
 - Windows XP requires .net framework v4 and Enable All Cookies in IE.
   - http://www.microsoft.com/en-us/download/details.aspx?id=17851
   
-- Windows 10 requires “Always allow session cookies”
+- Windows 10 requires Always allow session cookies�
   - Control Panel > Internet Options > Privacy (tab) > Advanced (button)
 
 Step 1) Open accounts.txt with notepad and type in your windows live 
-account email/password credentials. One account per line.
+accounts email/password credentials. One account per line. 
+If you intend on using a proxy, then you can use email/password/proxy/port
 
 Step 2) You can change words.txt with notepad or leave them the 
 way it is currently. It's completely up to you.
 
-Step 3) Start bingRewards.exe and press the start button and let it run.
+Step 3) Adjust your settings in the File > Settings menu.
+
+Step 4) Start bingRewards.exe and press the start button and let it run.
 
 
 How It Works
@@ -38,17 +41,4 @@ trigger until the desktopsearches/mobilesearches limit is met.
 Each change and timer is triggered when the document is completely
 loaded in the web browser as to not interrupt the searches.
 
-
-Settings Descriptions
-=====================
-startspeed 	-> After logging in, when does the searching start? In milliseconds.
-searchspeedmin 	-> Search randimization in milliseconds. Lowest number.
-searchspeedmax 	-> Search randimization in milliseconds. Highest number.
-autostart 	-> Start searching when the program starts executing. 0=off 1=on.
-hidebrowser 	-> Hides the browser window. Can be useful if you hear clicking noises.
-mobilesearches 	-> How many times should this program do searches on Bing mobile?
-desktopsearches -> How many times should this program do searches on Bing desktop?
-autoclose 	-> After all accounts are done searching and the program finishes, should it close after 30 seconds? 0=off 1=on.
-startminimized 	-> Start program minimized. Useful if program is setup on task scheduler.
-searchtype 	-> Bing search types. image,video,map,news,explore or normal.
 

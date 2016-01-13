@@ -323,15 +323,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Bing Rewards Bot"
-        "ProductCode" = "8:{902872BB-9806-4FE9-8A1D-FFB9FE8C8DB8}"
-        "PackageCode" = "8:{DD636240-B956-46B9-9EB4-9F1492F18527}"
+        "ProductCode" = "8:{9ED021E9-63FE-4627-B07E-C26C2438BCD5}"
+        "PackageCode" = "8:{F22FA521-70D4-40C4-91A4-65CF81CFAECF}"
         "UpgradeCode" = "8:{534141D3-7921-447E-B002-69B191B2D6E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:NewAgeSoldier"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:NewAgeSoldier.com"
@@ -887,7 +887,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_98F0B5134FF448ED9D5291F31C3228E8"
             {
-            "SourcePath" = "8:..\\bingRewards\\obj\\x86\\Release\\bingRewards.exe"
+            "SourcePath" = "8:..\\bingRewards\\obj\\x86\\Debug\\bingRewards.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
