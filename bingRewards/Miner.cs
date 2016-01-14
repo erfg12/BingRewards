@@ -13,6 +13,7 @@ using System.Collections;
 using System.Globalization;
 using System.Web;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace bingRewards
 {
@@ -409,9 +410,15 @@ namespace bingRewards
             searchTimer.Enabled = true;
         }
 
-        void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
+        async Task PutTaskDelay()
         {
-            webBrowser2.Document.Window.ScrollTo(200, 9999);
+            await Task.Delay(2000);
+        }
+
+        async void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            await PutTaskDelay();
+            adBrowser.Document.Window.ScrollTo(200, 9999);
         }
 
         private void readmeToolStripMenuItem_Click(object sender, EventArgs e)

@@ -146,9 +146,9 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
                 "AllowLaterVersions" = "11:FALSE"
-                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
+                "InstallUrl" = "8:https://www.microsoft.com/en-us/download/details.aspx?id=30653"
                 }
             }
         }
@@ -324,7 +324,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Bing Rewards Bot"
         "ProductCode" = "8:{9ED021E9-63FE-4627-B07E-C26C2438BCD5}"
-        "PackageCode" = "8:{F22FA521-70D4-40C4-91A4-65CF81CFAECF}"
+        "PackageCode" = "8:{9FDC8454-7ACC-43AE-92BE-E1551F4B3C97}"
         "UpgradeCode" = "8:{534141D3-7921-447E-B002-69B191B2D6E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

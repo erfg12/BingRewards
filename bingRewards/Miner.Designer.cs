@@ -47,7 +47,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.adBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -215,23 +215,23 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.webBrowser2);
+            this.panel1.Controls.Add(this.adBrowser);
             this.panel1.Location = new System.Drawing.Point(862, 59);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(149, 760);
             this.panel1.TabIndex = 16;
             // 
-            // webBrowser2
+            // adBrowser
             // 
-            this.webBrowser2.Location = new System.Drawing.Point(3, -47);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.ScriptErrorsSuppressed = true;
-            this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(229, 760);
-            this.webBrowser2.TabIndex = 0;
-            this.webBrowser2.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
-            this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebDocumentCompleted2);
+            this.adBrowser.Location = new System.Drawing.Point(3, -47);
+            this.adBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.adBrowser.Name = "adBrowser";
+            this.adBrowser.ScriptErrorsSuppressed = true;
+            this.adBrowser.ScrollBarsEnabled = false;
+            this.adBrowser.Size = new System.Drawing.Size(229, 760);
+            this.adBrowser.TabIndex = 0;
+            this.adBrowser.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
+            this.adBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebDocumentCompleted2);
             // 
             // statusStrip1
             // 
@@ -280,7 +280,7 @@
             // readmeToolStripMenuItem
             // 
             this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
-            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.readmeToolStripMenuItem.Text = "Readme";
             this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
             // 
@@ -294,7 +294,7 @@
             // aboutThisSoftwareToolStripMenuItem
             // 
             this.aboutThisSoftwareToolStripMenuItem.Name = "aboutThisSoftwareToolStripMenuItem";
-            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.aboutThisSoftwareToolStripMenuItem.Text = "About This Software";
             this.aboutThisSoftwareToolStripMenuItem.Click += new System.EventHandler(this.aboutThisSoftwareToolStripMenuItem_Click);
             // 
@@ -424,7 +424,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.WebBrowser adBrowser;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox speedmin;
