@@ -279,6 +279,11 @@ namespace bingRewards
                 countDown = countDown - 1;
         }
 
+        async Task PutTaskDelay()
+        {
+            await Task.Delay(5000);
+        }
+
         private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
             if (webBrowser1.Url == null)
@@ -288,9 +293,10 @@ namespace bingRewards
             stuckTimer.Enabled = true;
         }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        private async void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             stuckTimer.Enabled = false;
+            await PutTaskDelay();
             if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
             {
                 foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
@@ -410,15 +416,11 @@ namespace bingRewards
             searchTimer.Enabled = true;
         }
 
-        async Task PutTaskDelay()
-        {
-            await Task.Delay(2000);
-        }
-
         async void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             await PutTaskDelay();
             adBrowser.Document.Window.ScrollTo(200, 9999);
+            adBrowser.Visible = true;
         }
 
         private void readmeToolStripMenuItem_Click(object sender, EventArgs e)

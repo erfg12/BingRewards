@@ -76,7 +76,7 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(676, 583);
+            this.webBrowser1.Size = new System.Drawing.Size(676, 576);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -159,9 +159,9 @@
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.ForeColor = System.Drawing.Color.ForestGreen;
-            this.startBtn.Location = new System.Drawing.Point(861, 30);
+            this.startBtn.Location = new System.Drawing.Point(864, 30);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(75, 23);
+            this.startBtn.Size = new System.Drawing.Size(80, 23);
             this.startBtn.TabIndex = 11;
             this.startBtn.Text = "START";
             this.startBtn.UseVisualStyleBackColor = false;
@@ -218,19 +218,20 @@
             this.panel1.Controls.Add(this.adBrowser);
             this.panel1.Location = new System.Drawing.Point(862, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 760);
+            this.panel1.Size = new System.Drawing.Size(174, 760);
             this.panel1.TabIndex = 16;
             // 
             // adBrowser
             // 
-            this.adBrowser.Location = new System.Drawing.Point(3, -47);
+            this.adBrowser.Location = new System.Drawing.Point(-19, -73);
             this.adBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.adBrowser.Name = "adBrowser";
             this.adBrowser.ScriptErrorsSuppressed = true;
             this.adBrowser.ScrollBarsEnabled = false;
-            this.adBrowser.Size = new System.Drawing.Size(229, 760);
+            this.adBrowser.Size = new System.Drawing.Size(321, 760);
             this.adBrowser.TabIndex = 0;
             this.adBrowser.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
+            this.adBrowser.Visible = false;
             this.adBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebDocumentCompleted2);
             // 
             // statusStrip1
@@ -242,7 +243,7 @@
             this.toolStripDropDownButton1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1013, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1036, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -339,9 +340,9 @@
             this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopBtn.ForeColor = System.Drawing.Color.Red;
-            this.stopBtn.Location = new System.Drawing.Point(942, 30);
+            this.stopBtn.Location = new System.Drawing.Point(951, 30);
             this.stopBtn.Name = "stopBtn";
-            this.stopBtn.Size = new System.Drawing.Size(68, 23);
+            this.stopBtn.Size = new System.Drawing.Size(80, 23);
             this.stopBtn.TabIndex = 22;
             this.stopBtn.Text = "STOP";
             this.stopBtn.UseVisualStyleBackColor = false;
@@ -370,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 663);
+            this.ClientSize = new System.Drawing.Size(1036, 667);
             this.Controls.Add(this.stopBtn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.speedmax);
