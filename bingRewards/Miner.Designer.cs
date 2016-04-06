@@ -145,12 +145,12 @@
             // 
             // startTimer
             // 
-            this.startTimer.Interval = 50000;
+            this.startTimer.Interval = 9000;
             this.startTimer.Tick += new System.EventHandler(this.startTimer_Tick);
             // 
             // searchTimer
             // 
-            this.searchTimer.Interval = 50000;
+            this.searchTimer.Interval = 9000;
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
             // 
             // startBtn
@@ -350,7 +350,7 @@
             // 
             // dashboardWait
             // 
-            this.dashboardWait.Interval = 5000;
+            this.dashboardWait.Interval = 50000;
             this.dashboardWait.Tick += new System.EventHandler(this.dashboardWait_Tick);
             // 
             // contextMenuStrip1

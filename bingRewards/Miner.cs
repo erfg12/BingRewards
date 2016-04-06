@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Web;
 using System.Net;
 using System.Threading.Tasks;
+using AutoItX3Lib;
 
 namespace bingRewards
 {
@@ -34,6 +35,8 @@ namespace bingRewards
         {
             InitializeComponent();
         }
+
+        AutoItX3Lib.AutoItX3 aix3c = new AutoItX3Lib.AutoItX3();
 
         [DllImport("wininet.dll")]
         static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
@@ -299,15 +302,23 @@ namespace bingRewards
             await PutTaskDelay();
             if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
             {
-                foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
+                /*foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
                 {
                     if (HtmlElement1.GetAttribute("name") == "loginfmt")
                         HtmlElement1.SetAttribute("value", username);
                     if (HtmlElement1.GetAttribute("name") == "passwd")
                         HtmlElement1.SetAttribute("value", password);
+                    await PutTaskDelay();
                     if (HtmlElement1.GetAttribute("value") == "Sign in")
                         HtmlElement1.InvokeMember("click");
-                }
+                }*/
+                //MessageBox.Show("X:" + aix3c.MouseGetPosX().ToString() + " Y:" + aix3c.MouseGetPosY().ToString());
+                object coord = aix3c.PixelSearch(0, 0, 1000, 1000, 0x0078D7, 0, 1);
+                object[] pixelCoord = (object[])coord;
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "", username + "{TAB}" + password);
+                //await PutTaskDelay();
+                //aix3c.ControlClick("Bing Rewards Search Bot", "", "", "LEFT", 1, (int)pixelCoord[0], (int)pixelCoord[1]);
+                aix3c.MouseMove((int)pixelCoord[0], (int)pixelCoord[1], 500);
                 return;
             }
 
@@ -426,11 +437,6 @@ namespace bingRewards
         private void readmeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("readme.txt");
-        }
-
-        private void forumsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://newagesoldier.com/forum");
         }
 
         private void softwareInformationToolStripMenuItem_Click(object sender, EventArgs e)
