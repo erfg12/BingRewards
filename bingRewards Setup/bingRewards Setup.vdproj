@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DDB5EEA227A647F99DD1B315950F2D2C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
         "MsmSig" = "8:_UNDEFINED"
@@ -234,6 +240,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DDB5EEA227A647F99DD1B315950F2D2C"
+            {
+            "SourcePath" = "8:..\\bingRewards\\bin\\Release\\AutoItX3.dll"
+            "TargetName" = "8:AutoItX3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -323,15 +349,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Bing Rewards Bot"
-        "ProductCode" = "8:{A9D33B47-5766-4AB8-907B-6B91D87D73FE}"
-        "PackageCode" = "8:{542FD700-028E-4CF7-BC0F-E407973A99FA}"
+        "ProductCode" = "8:{705B71CE-B6DA-45AF-8342-727155EBD019}"
+        "PackageCode" = "8:{C9C98191-882F-40B8-BEB6-BE61E8461D79}"
         "UpgradeCode" = "8:{534141D3-7921-447E-B002-69B191B2D6E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.1"
+        "ProductVersion" = "8:1.1.3"
         "Manufacturer" = "8:NewAgeSoldier"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:NewAgeSoldier.com"

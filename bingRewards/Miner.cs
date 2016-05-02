@@ -287,6 +287,11 @@ namespace bingRewards
             await Task.Delay(5000);
         }
 
+        async Task PutTaskDelay2()
+        {
+            await Task.Delay(1000);
+        }
+
         private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
             if (webBrowser1.Url == null)
@@ -299,26 +304,27 @@ namespace bingRewards
         private async void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             stuckTimer.Enabled = false;
-            await PutTaskDelay();
             if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
             {
-                /*foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //Force post (login).
+                await PutTaskDelay2(); //wait for HTML elements to load in
+                foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //fake a sign in
                 {
-                    if (HtmlElement1.GetAttribute("name") == "loginfmt")
-                        HtmlElement1.SetAttribute("value", username);
-                    if (HtmlElement1.GetAttribute("name") == "passwd")
-                        HtmlElement1.SetAttribute("value", password);
-                    await PutTaskDelay();
                     if (HtmlElement1.GetAttribute("value") == "Sign in")
                         HtmlElement1.InvokeMember("click");
-                }*/
-                //MessageBox.Show("X:" + aix3c.MouseGetPosX().ToString() + " Y:" + aix3c.MouseGetPosY().ToString());
-                object coord = aix3c.PixelSearch(0, 0, 1000, 1000, 0x0078D7, 0, 1);
-                object[] pixelCoord = (object[])coord;
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "", username + "{TAB}" + password);
-                //await PutTaskDelay();
-                //aix3c.ControlClick("Bing Rewards Search Bot", "", "", "LEFT", 1, (int)pixelCoord[0], (int)pixelCoord[1]);
-                aix3c.MouseMove((int)pixelCoord[0], (int)pixelCoord[1], 500);
+                }
+                aix3c.ControlClick("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]");
+                webBrowser1.Document.Body.Focus();
+                await PutTaskDelay2(); //after focusing, wait a little bit
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", "{TAB}", 0);
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", username, 0);
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", "{TAB}", 0);
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", password, 0);
+                await PutTaskDelay2();
+                foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //really sign in
+                {
+                if (HtmlElement1.GetAttribute("value") == "Sign in")
+                        HtmlElement1.InvokeMember("click");
+                }
                 return;
             }
 

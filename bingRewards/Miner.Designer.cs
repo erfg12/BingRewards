@@ -223,12 +223,12 @@
             // 
             // adBrowser
             // 
-            this.adBrowser.Location = new System.Drawing.Point(-19, -73);
+            this.adBrowser.Location = new System.Drawing.Point(-136, -59);
             this.adBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.adBrowser.Name = "adBrowser";
             this.adBrowser.ScriptErrorsSuppressed = true;
             this.adBrowser.ScrollBarsEnabled = false;
-            this.adBrowser.Size = new System.Drawing.Size(321, 760);
+            this.adBrowser.Size = new System.Drawing.Size(321, 1016);
             this.adBrowser.TabIndex = 0;
             this.adBrowser.Url = new System.Uri("https://newagesoldier.com/bing-rewards-program-thanks/", System.UriKind.Absolute);
             this.adBrowser.Visible = false;
