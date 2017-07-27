@@ -39,8 +39,6 @@
             this.autostartBox = new System.Windows.Forms.ComboBox();
             this.hidebrowserBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.mobilesearchesBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.desktopsearchesBox = new System.Windows.Forms.TextBox();
             this.autocloseBox = new System.Windows.Forms.ComboBox();
@@ -147,35 +145,18 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Hide Browser";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Mobile Search Quantity";
-            // 
-            // mobilesearchesBox
-            // 
-            this.mobilesearchesBox.Location = new System.Drawing.Point(153, 145);
-            this.mobilesearchesBox.Name = "mobilesearchesBox";
-            this.mobilesearchesBox.Size = new System.Drawing.Size(149, 20);
-            this.mobilesearchesBox.TabIndex = 11;
-            this.mobilesearchesBox.TextChanged += new System.EventHandler(this.mobilesearchesBox_TextChanged);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 174);
+            this.label6.Location = new System.Drawing.Point(64, 149);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 13);
+            this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 14;
-            this.label6.Text = "Desktop Search Quantity";
+            this.label6.Text = "Search Quantity";
             // 
             // desktopsearchesBox
             // 
-            this.desktopsearchesBox.Location = new System.Drawing.Point(153, 171);
+            this.desktopsearchesBox.Location = new System.Drawing.Point(153, 146);
             this.desktopsearchesBox.Name = "desktopsearchesBox";
             this.desktopsearchesBox.Size = new System.Drawing.Size(149, 20);
             this.desktopsearchesBox.TabIndex = 13;
@@ -186,7 +167,7 @@
             this.autocloseBox.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.autocloseBox.Location = new System.Drawing.Point(153, 197);
+            this.autocloseBox.Location = new System.Drawing.Point(153, 172);
             this.autocloseBox.Name = "autocloseBox";
             this.autocloseBox.Size = new System.Drawing.Size(149, 21);
             this.autocloseBox.TabIndex = 16;
@@ -194,7 +175,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(89, 200);
+            this.label7.Location = new System.Drawing.Point(89, 175);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 15;
@@ -206,7 +187,7 @@
             this.startminimizedBox.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.startminimizedBox.Location = new System.Drawing.Point(153, 224);
+            this.startminimizedBox.Location = new System.Drawing.Point(153, 199);
             this.startminimizedBox.Name = "startminimizedBox";
             this.startminimizedBox.Size = new System.Drawing.Size(149, 21);
             this.startminimizedBox.TabIndex = 18;
@@ -214,7 +195,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(69, 227);
+            this.label8.Location = new System.Drawing.Point(69, 202);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 17;
@@ -230,7 +211,7 @@
             "maps",
             "news",
             "explore"});
-            this.searchtypeBox.Location = new System.Drawing.Point(153, 251);
+            this.searchtypeBox.Location = new System.Drawing.Point(153, 226);
             this.searchtypeBox.Name = "searchtypeBox";
             this.searchtypeBox.Size = new System.Drawing.Size(149, 21);
             this.searchtypeBox.TabIndex = 20;
@@ -238,7 +219,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(79, 254);
+            this.label9.Location = new System.Drawing.Point(79, 229);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 19;
@@ -248,7 +229,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(153, 304);
+            this.button1.Location = new System.Drawing.Point(153, 279);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 35);
             this.button1.TabIndex = 21;
@@ -260,7 +241,7 @@
             // 
             this.defaultsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.defaultsBtn.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.defaultsBtn.Location = new System.Drawing.Point(71, 304);
+            this.defaultsBtn.Location = new System.Drawing.Point(71, 279);
             this.defaultsBtn.Name = "defaultsBtn";
             this.defaultsBtn.Size = new System.Drawing.Size(76, 35);
             this.defaultsBtn.TabIndex = 22;
@@ -273,7 +254,7 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(21, 347);
+            this.textBox1.Location = new System.Drawing.Point(21, 322);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(285, 23);
@@ -297,7 +278,7 @@
             this.accountsBox.Multiline = true;
             this.accountsBox.Name = "accountsBox";
             this.accountsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.accountsBox.Size = new System.Drawing.Size(397, 323);
+            this.accountsBox.Size = new System.Drawing.Size(397, 306);
             this.accountsBox.TabIndex = 26;
             // 
             // label10
@@ -316,13 +297,13 @@
             this.searchWordsBox.Multiline = true;
             this.searchWordsBox.Name = "searchWordsBox";
             this.searchWordsBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.searchWordsBox.Size = new System.Drawing.Size(307, 323);
+            this.searchWordsBox.Size = new System.Drawing.Size(307, 306);
             this.searchWordsBox.TabIndex = 28;
             // 
             // randSentences
             // 
             this.randSentences.AutoSize = true;
-            this.randSentences.Location = new System.Drawing.Point(9, 281);
+            this.randSentences.Location = new System.Drawing.Point(9, 256);
             this.randSentences.Name = "randSentences";
             this.randSentences.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.randSentences.Size = new System.Drawing.Size(158, 17);
@@ -334,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 376);
+            this.ClientSize = new System.Drawing.Size(1031, 353);
             this.Controls.Add(this.randSentences);
             this.Controls.Add(this.searchWordsBox);
             this.Controls.Add(this.label10);
@@ -351,8 +332,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.desktopsearchesBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.mobilesearchesBox);
             this.Controls.Add(this.hidebrowserBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.autostartBox);
@@ -387,8 +366,6 @@
         private System.Windows.Forms.ComboBox autostartBox;
         private System.Windows.Forms.ComboBox hidebrowserBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox mobilesearchesBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox desktopsearchesBox;
         private System.Windows.Forms.ComboBox autocloseBox;

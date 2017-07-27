@@ -15,6 +15,8 @@ using System.Web;
 using System.Net;
 using System.Threading.Tasks;
 using AutoItX3Lib;
+using System.Collections.Specialized;
+using System.Diagnostics;
 
 namespace bingRewards
 {
@@ -26,7 +28,7 @@ namespace bingRewards
         private string port;
         private int countDown = Properties.Settings.Default.desktopsearches;
         private int accountNum = 0;
-        private bool mobile = false; //start with desktop
+        //private bool mobile = false; //start with desktop
         string wordsFile = Application.StartupPath + Path.DirectorySeparatorChar + "words.txt";
         string accountsFile = Application.StartupPath + Path.DirectorySeparatorChar + "accounts.txt";
         public int selectedAcc = 0;
@@ -210,7 +212,7 @@ namespace bingRewards
         {
             try
             {
-                mobile = false;
+                //mobile = false;
                 string content = "";
                 using (StreamReader r = new StreamReader(accountsFile))
                 {
@@ -273,10 +275,10 @@ namespace bingRewards
             else if (Properties.Settings.Default.searchtype.Contains("explore") || Properties.Settings.Default.searchtype.Contains("more"))
                 searchURL = "http://www.bing.com/explore?q=";
 
-            if (mobile)
-                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3");
-            else
-                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+            //if (mobile)
+            //    webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3");
+            //else
+                webBrowser1.Navigate(searchURL + query, null, null, "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063");
 
             if (webBrowser1.Url.ToString().Contains(@"?q="))
                 countDown = countDown - 1;
@@ -304,27 +306,13 @@ namespace bingRewards
         private async void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             stuckTimer.Enabled = false;
-            if (webBrowser1.Url.ToString().Contains(@"login.live.com/login"))
+            if (webBrowser1.Url.ToString().Contains(@"https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1501178470&rver=6.7.6643.0&wp=MBI_SSL&wreply=https:%2f%2faccount.microsoft.com%2fauth%2fcomplete-signin%3fru%3dhttps%253a%252f%252faccount.microsoft.com%252frewards%253frefd%253daccount.microsoft.com%2526destrt%253drewards-dashboard%2526refp%253dsignedout-index&lc=1033&id=292666&lw=1&fl=easi2&pcexp=true&uictx=me"))
             {
-                await PutTaskDelay2(); //wait for HTML elements to load in
-                foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //fake a sign in
-                {
-                    if (HtmlElement1.GetAttribute("value") == "Sign in")
-                        HtmlElement1.InvokeMember("click");
-                }
-                aix3c.ControlClick("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]");
-                webBrowser1.Document.Body.Focus();
-                await PutTaskDelay2(); //after focusing, wait a little bit
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", "{TAB}", 0);
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", username, 0);
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", "{TAB}", 0);
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "[CLASS:Internet Explorer_Server; INSTANCE:2]", password, 0);
                 await PutTaskDelay2();
-                foreach (HtmlElement HtmlElement1 in webBrowser1.Document.Body.All) //really sign in
-                {
-                if (HtmlElement1.GetAttribute("value") == "Sign in")
-                        HtmlElement1.InvokeMember("click");
-                }
+                webBrowser1.Document.GetElementById("loginfmt").InnerText = username;
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "", "{ENTER}", 0);
+                await PutTaskDelay2();
+                aix3c.ControlSend("Bing Rewards Search Bot", "", "", password + "{Enter}", 0);
                 return;
             }
 
@@ -334,23 +322,23 @@ namespace bingRewards
             if (webBrowser1.Url.ToString().Equals(@"http://www.msn.com/"))
             {
                 dashboardWait.Enabled = true;
-                webBrowser1.Navigate(new Uri("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1406628123&rver=6.0.5286.0&wp=MBI&wreply=https:%2F%2Fwww.bing.com%2Fsecure%2FPassport.aspx%3Frequrl%3Dhttp%253a%252f%252fwww.bing.com%252frewards%252fdashboard"));
+                webBrowser1.Navigate(new Uri(@"https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1501178470&rver=6.7.6643.0&wp=MBI_SSL&wreply=https:%2f%2faccount.microsoft.com%2fauth%2fcomplete-signin%3fru%3dhttps%253a%252f%252faccount.microsoft.com%252frewards%253frefd%253daccount.microsoft.com%2526destrt%253drewards-dashboard%2526refp%253dsignedout-index&lc=1033&id=292666&lw=1&fl=easi2&pcexp=true&uictx=me"), null, null, "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063");
                 return;
             }
 
             if (webBrowser1.Url.ToString().Contains(@"bing.com/Passport") || webBrowser1.Url.ToString().Contains(@"live.com") || webBrowser1.Url.ToString().Contains(@"bing.com/secure"))
                 return; //after logout, we are redirected. Please wait.
 
-            if (mobile)
-                searchModeBox.Text = "mobile";
-            else
-                searchModeBox.Text = "desktop";
+            //if (mobile)
+            //    searchModeBox.Text = "mobile";
+            //else
+                //searchModeBox.Text = "desktop";
 
-            if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
+            /*if (webBrowser1.Url.ToString().Contains(@"bing.com/rewards/dashboard"))
             {
                 dashboardWait.Enabled = true;
                 return;
-            }
+            }*/
 
             searchesLeftBox.Text = countDown.ToString();
             accountBox.Text = username;
@@ -360,14 +348,14 @@ namespace bingRewards
 
             if (countDown == 0)
             {
-                if (mobile) //just finished with mobile, back to desktop
-                    startTimer.Enabled = true;
-                else
-                { //switch to mobile
-                    mobile = true;
+                //if (mobile) //just finished with mobile, back to desktop
+                //    startTimer.Enabled = true;
+                //else
+                //{ //switch to mobile
+                //    mobile = true;
                     countDown = Properties.Settings.Default.mobilesearches;
                     searchTimer.Enabled = true;
-                }
+                //}
             }
             else
                 searchTimer.Enabled = true;
@@ -436,8 +424,8 @@ namespace bingRewards
         async void WebDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             await PutTaskDelay();
-            adBrowser.Document.Window.ScrollTo(200, 9999);
-            adBrowser.Visible = true;
+            //adBrowser.Document.Window.ScrollTo(200, 9999);
+            //adBrowser.Visible = true;
         }
 
         private void readmeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -509,6 +497,12 @@ namespace bingRewards
             if (listBox1.SelectedIndex != -1)
                 selectedAcc = listBox1.SelectedIndex;
             //MessageBox.Show(listBox1.SelectedIndex.ToString() + "/" + selectedAcc.ToString());
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+            settings settingsForm = new settings();
+            settingsForm.Show();
         }
     }
 }

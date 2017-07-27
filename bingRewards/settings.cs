@@ -25,7 +25,7 @@ namespace bingRewards
             tt.SetToolTip(this.searchspeedmaxBox, "Search Speed Maximum In Milliseconds");
             tt.SetToolTip(this.autostartBox, "Automatically Start Searching On Program Open");
             tt.SetToolTip(this.hidebrowserBox, "Display Browser Window");
-            tt.SetToolTip(this.mobilesearchesBox, "Mobile Searches Quantity");
+            //tt.SetToolTip(this.mobilesearchesBox, "Mobile Searches Quantity");
             tt.SetToolTip(this.desktopsearchesBox, "Desktop Searches Quantity");
             tt.SetToolTip(this.autocloseBox, "Automatically Close Bing Bot Upon Completion");
             tt.SetToolTip(this.startminimizedBox, "Start Bing Bot Minimized");
@@ -47,7 +47,7 @@ namespace bingRewards
             searchspeedmaxBox.Text = Properties.Settings.Default.searchspeedmax.ToString();
             autostartBox.Text = Properties.Settings.Default.autostart.ToString();
             hidebrowserBox.Text = Properties.Settings.Default.hidebrowser.ToString();
-            mobilesearchesBox.Text = Properties.Settings.Default.mobilesearches.ToString();
+            //mobilesearchesBox.Text = Properties.Settings.Default.mobilesearches.ToString();
             desktopsearchesBox.Text = Properties.Settings.Default.desktopsearches.ToString();
             autocloseBox.Text = Properties.Settings.Default.autoclose.ToString();
             startminimizedBox.Text = Properties.Settings.Default.startminimized.ToString();
@@ -62,8 +62,8 @@ namespace bingRewards
             searchspeedmaxBox.Text = "3000";
             autostartBox.Text = "false";
             hidebrowserBox.Text = "false";
-            mobilesearchesBox.Text = "20";
-            desktopsearchesBox.Text = "30";
+            //mobilesearchesBox.Text = "20";
+            desktopsearchesBox.Text = "50";
             autocloseBox.Text = "false";
             startminimizedBox.Text = "false";
             searchtypeBox.Text = "normal";
@@ -76,7 +76,7 @@ namespace bingRewards
             Properties.Settings.Default.searchspeedmax = Convert.ToInt32(searchspeedmaxBox.Text);
             Properties.Settings.Default.autostart = Convert.ToBoolean(autostartBox.Text);
             Properties.Settings.Default.hidebrowser = Convert.ToBoolean(hidebrowserBox.Text);
-            Properties.Settings.Default.mobilesearches = Convert.ToInt32(mobilesearchesBox.Text);
+            //Properties.Settings.Default.mobilesearches = Convert.ToInt32(mobilesearchesBox.Text);
             Properties.Settings.Default.desktopsearches = Convert.ToInt32(desktopsearchesBox.Text);
             Properties.Settings.Default.autoclose = Convert.ToBoolean(autocloseBox.Text);
             Properties.Settings.Default.startminimized = Convert.ToBoolean(startminimizedBox.Text);
