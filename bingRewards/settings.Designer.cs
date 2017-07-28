@@ -348,6 +348,7 @@
             this.MinimizeBox = false;
             this.Name = "settings";
             this.Text = "Bing Bot Settings";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

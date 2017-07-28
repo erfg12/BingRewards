@@ -266,7 +266,7 @@
             this.settings.Name = "settings";
             this.settings.Size = new System.Drawing.Size(35, 19);
             this.settings.TabIndex = 23;
-            this.settings.Text = "Edit";
+            this.settings.Text = "EDIT";
             this.settings.UseVisualStyleBackColor = false;
             this.settings.Click += new System.EventHandler(this.settings_Click);
             // 

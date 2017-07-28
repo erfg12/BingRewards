@@ -85,7 +85,7 @@ namespace bingRewards
             Properties.Settings.Default.Save();
 
             System.IO.File.WriteAllText("accounts.txt", accountsBox.Text);
-            System.IO.File.WriteAllText("words.txt", searchWordsBox.Text);
+            searchWordsBox.Text = File.ReadAllText("words.txt");
 
             this.Close();
         }
