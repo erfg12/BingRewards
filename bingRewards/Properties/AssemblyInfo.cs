@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("New Age Soldier")]
 [assembly: AssemblyProduct("Bing Rewards Search Bot")]
-[assembly: AssemblyCopyright("Jacob Fliss ©2016")]
+[assembly: AssemblyCopyright("Jacob Fliss ©2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.1.2")]
-[assembly: AssemblyFileVersion("1.1.2")]
+[assembly: AssemblyVersion("1.1.4")]
+[assembly: AssemblyFileVersion("1.1.4")]

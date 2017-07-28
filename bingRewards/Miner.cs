@@ -14,9 +14,10 @@ using System.Globalization;
 using System.Web;
 using System.Net;
 using System.Threading.Tasks;
-using AutoItX3Lib;
+using AutoIt;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using EO;
 
 namespace bingRewards
 {
@@ -38,8 +39,6 @@ namespace bingRewards
             InitializeComponent();
         }
 
-        AutoItX3Lib.AutoItX3 aix3c = new AutoItX3Lib.AutoItX3();
-
         [DllImport("wininet.dll")]
         static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int lpdwBufferLength);
 
@@ -57,23 +56,34 @@ namespace bingRewards
             const int INTERNET_OPEN_TYPE_PROXY = 3;
             Struct_INTERNET_PROXY_INFO s_IPI;
             s_IPI.dwAccessType = INTERNET_OPEN_TYPE_PROXY;
-            s_IPI.proxy = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(strProxy);
-            s_IPI.proxyBypass = System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi("Global");
+            s_IPI.proxy = Marshal.StringToHGlobalAnsi(strProxy);
+            s_IPI.proxyBypass = Marshal.StringToHGlobalAnsi("Global");
 
-            IntPtr intptrStruct = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(System.Runtime.InteropServices.Marshal.SizeOf(s_IPI));
+            IntPtr intptrStruct = Marshal.AllocCoTaskMem(Marshal.SizeOf(s_IPI));
             InternetSetOption(IntPtr.Zero, 81, intptrStruct, 0); // clear cookies
             //InternetSetOption(IntPtr.Zero, 42, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // flush cache (crashes in win10)
             InternetSetOption(IntPtr.Zero, 1, intptrStruct, 0); // allow all cookies
 
             if (strProxy != ":") //if we have a proxy:port
             {
-                System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
-                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
+                Marshal.StructureToPtr(s_IPI, intptrStruct, true);
+                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, Marshal.SizeOf(s_IPI)); // set proxy
             }
         }
 
         private void Miner_Load(object sender, EventArgs e)
         {
+            Microsoft.Win32.RegistryKey key;
+            string theKey = @"SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION";
+            key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(theKey, true);
+            if (key.GetValue("bingRewards.exe") == null)
+            {
+                key.SetValue("bingRewards.exe", 11001, Microsoft.Win32.RegistryValueKind.DWord);
+                //MessageBox.Show("[DEBUG] Making registry keys...");
+                Application.Restart();
+            }
+            key.Close();
+
             if (Convert.ToInt32(Properties.Settings.Default.startminimized) >= 1)
                 this.WindowState = FormWindowState.Minimized;
 
@@ -174,6 +184,20 @@ namespace bingRewards
         {
             Random random = new Random();
             return random.Next(min, max);
+        }
+
+        [DllImport("urlmon.dll", CharSet = CharSet.Ansi)]
+        private static extern int UrlMkSetSessionOption(int dwOption, string pBuffer, int dwBufferLength, int dwReserved);
+
+        const int URLMON_OPTION_USERAGENT = 0x10000001;
+        const int URLMON_OPTION_USERAGENT_REFRESH = 0x10000002;
+
+        public void ChangeUserAgent()
+        {
+            string ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063";
+
+            UrlMkSetSessionOption(URLMON_OPTION_USERAGENT_REFRESH, null, 0, 0);
+            UrlMkSetSessionOption(URLMON_OPTION_USERAGENT, ua, ua.Length, 0);
         }
 
         public string GetRandomSentence(int wordCount)
@@ -310,9 +334,9 @@ namespace bingRewards
             {
                 await PutTaskDelay2();
                 webBrowser1.Document.GetElementById("loginfmt").InnerText = username;
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "", "{ENTER}", 0);
+                AutoItX.ControlSend("Bing Rewards Search Bot", "", "", "{ENTER}", 0);
                 await PutTaskDelay2();
-                aix3c.ControlSend("Bing Rewards Search Bot", "", "", password + "{Enter}", 0);
+                AutoItX.ControlSend("Bing Rewards Search Bot", "", "", password + "{Enter}", 0);
                 return;
             }
 

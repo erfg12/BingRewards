@@ -66,6 +66,8 @@ namespace bingRewards
                 System.Runtime.InteropServices.Marshal.StructureToPtr(s_IPI, intptrStruct, true);
                 InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY, intptrStruct, System.Runtime.InteropServices.Marshal.SizeOf(s_IPI)); // set proxy
             }
+            
+            
         }
 
         private void backBtn_Click(object sender, EventArgs e)

@@ -3,10 +3,6 @@ del /S /F /AH *.suo
 rmdir /s /q ".vs"
 rmdir /s /q "bingRewards\obj"
 rmdir /s /q "bingRewards Setup\Release"
-rmdir /s /q "bingRewards\bin\Debug"
-cd "bingRewards\bin\Release"
-del /S /F *.exe
-del /S /F *.vshost.*
-del /S /F *.pdb
-del /S /F *.config
-del /S /F *.manifest
+rmdir /s /q "bingRewards Setup\Debug"
+rmdir /s /q "bingRewards\bin"
+rmdir /s /q "packages"

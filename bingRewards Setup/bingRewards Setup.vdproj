@@ -15,7 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_50C384ABBAA54189ABB5D5A0826D2F09"
+        "MsmKey" = "8:_6158881A5AED4C41BE51A85895B8FFEB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_65CB5F88E6974F9BAC86E93D670560F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -27,32 +33,80 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_86F1E9099FAA199223F1D43695EBEA37"
+        "OwnerKey" = "8:_A0333D6942F60F128719F7D5F90B368A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_86F1E9099FAA199223F1D43695EBEA37"
+        "OwnerKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D2C48BAFBED0439CBC5ACBAF3C9A55DD"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_A0333D6942F60F128719F7D5F90B368A"
+        "OwnerKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D647713D42B643E49BD6F762953F4DE6"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_D399D4AC8D0945DE0F7BAECF8F0BAB2D"
+        "OwnerKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DDB5EEA227A647F99DD1B315950F2D2C"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_D399D4AC8D0945DE0F7BAECF8F0BAB2D"
+        "OwnerKey" = "8:_86F1E9099FAA199223F1D43695EBEA37"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D399D4AC8D0945DE0F7BAECF8F0BAB2D"
+        "OwnerKey" = "8:_A0333D6942F60F128719F7D5F90B368A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F4C51F9E03B88EE26F7BF5CF46B76821"
+        "OwnerKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_98F0B5134FF448ED9D5291F31C3228E8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A0333D6942F60F128719F7D5F90B368A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_86F1E9099FAA199223F1D43695EBEA37"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D399D4AC8D0945DE0F7BAECF8F0BAB2D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F4C51F9E03B88EE26F7BF5CF46B76821"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -160,10 +214,30 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50C384ABBAA54189ABB5D5A0826D2F09"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6158881A5AED4C41BE51A85895B8FFEB"
             {
-            "SourcePath" = "8:..\\bingRewards\\bin\\Release\\words.txt"
+            "SourcePath" = "8:..\\bingRewards\\words.txt"
             "TargetName" = "8:words.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_65CB5F88E6974F9BAC86E93D670560F6"
+            {
+            "SourcePath" = "8:..\\bingRewards\\accounts.txt"
+            "TargetName" = "8:accounts.txt"
             "Tag" = "8:"
             "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
             "Condition" = "8:"
@@ -200,10 +274,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2C48BAFBED0439CBC5ACBAF3C9A55DD"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_86F1E9099FAA199223F1D43695EBEA37"
             {
-            "SourcePath" = "8:..\\bingRewards\\bin\\Release\\accounts.txt"
-            "TargetName" = "8:accounts.txt"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EO.WebEngine, Version=17.2.14.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_86F1E9099FAA199223F1D43695EBEA37"
+                    {
+                    "Name" = "8:EO.WebEngine.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EO.WebEngine.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
             "Condition" = "8:"
@@ -217,13 +302,24 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D647713D42B643E49BD6F762953F4DE6"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A0333D6942F60F128719F7D5F90B368A"
             {
-            "SourcePath" = "8:..\\bingRewards\\bin\\Release\\readme.txt"
-            "TargetName" = "8:readme.txt"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EO.WebBrowser, Version=17.2.14.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A0333D6942F60F128719F7D5F90B368A"
+                    {
+                    "Name" = "8:EO.WebBrowser.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EO.WebBrowser.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
             "Condition" = "8:"
@@ -237,13 +333,24 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DDB5EEA227A647F99DD1B315950F2D2C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D399D4AC8D0945DE0F7BAECF8F0BAB2D"
             {
-            "SourcePath" = "8:..\\bingRewards\\bin\\Release\\AutoItX3.dll"
-            "TargetName" = "8:AutoItX3.dll"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EO.Base, Version=17.2.14.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D399D4AC8D0945DE0F7BAECF8F0BAB2D"
+                    {
+                    "Name" = "8:EO.Base.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EO.Base.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
             "Condition" = "8:"
@@ -257,7 +364,38 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F4C51F9E03B88EE26F7BF5CF46B76821"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AutoItX3.Assembly, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a646454c8d475470, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F4C51F9E03B88EE26F7BF5CF46B76821"
+                    {
+                    "Name" = "8:AutoItX3.Assembly.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AutoItX3.Assembly.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -349,15 +487,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Bing Rewards Bot"
-        "ProductCode" = "8:{705B71CE-B6DA-45AF-8342-727155EBD019}"
-        "PackageCode" = "8:{C9C98191-882F-40B8-BEB6-BE61E8461D79}"
+        "ProductCode" = "8:{E2DC2687-80DE-4A29-A5A2-2F5F07C404AA}"
+        "PackageCode" = "8:{7351E7B4-0E2C-42AB-9132-79D3ED5CE37E}"
         "UpgradeCode" = "8:{534141D3-7921-447E-B002-69B191B2D6E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.3"
+        "ProductVersion" = "8:1.1.4"
         "Manufacturer" = "8:NewAgeSoldier"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:NewAgeSoldier.com"
@@ -482,20 +620,6 @@
             "Folder" = "8:_5FF80F4204374622B701144A9AEC8CEA"
             "WorkingFolder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
             "Icon" = "8:_83D0470323F94E9A961933B258C8B7A6"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B07EC9F730D74019A0978F4BA95D25EA"
-            {
-            "Name" = "8:readme"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_D647713D42B643E49BD6F762953F4DE6"
-            "Folder" = "8:_8395B7DD2C11483E90CEFFDDB779B7BA"
-            "WorkingFolder" = "8:_D2C8FE6C97AC49F1BD3465605A9F9A45"
-            "Icon" = "8:"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BBA7EA7745594AF39CFE78A574D07B76"
