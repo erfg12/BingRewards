@@ -1,7 +1,0 @@
-user@domain.com/P@ssw0rd!
-second@account.com/2ndP@ssw0rd!
-third@account.com/3rdP@ssw0rd!
-four@account.com/4thP@ssw0rd!
-five@account.com/5thP@ssw0rd!
-myProxy@account.com/Pr0xyP@ssw0rd!/1.1.1.1/3128
-secondProxy@account.com/2ndPr0xyP@ssw0rd!/1.1.1.1/3128
