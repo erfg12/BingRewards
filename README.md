@@ -1,8 +1,6 @@
 BingRewards
 ===========
 
-Create by New Age Soldier
-
 Developed in VS .net 2017 using C# with AutoIt and EO.WebBrowser.
 
 ## OVERVIEW
