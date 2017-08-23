@@ -12,8 +12,7 @@ This program will search Bing’s site automatically! It utilizes the web browse
 ## FEATURES
 
 * Works on Windows XP, Vista, 7, 8, 8.1 and 10
-* Can minimize and let it work quietly in the background.
-* Searches both mobile and desktop pages
+* Can minimize and let it work in the background.
 * Different search types (images, videos, news, maps, and explore)
 * Adjustable Randomized Search Speeds
 * Custom Query Quantities
