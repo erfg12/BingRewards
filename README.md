@@ -36,7 +36,6 @@ To automate this process use the Windows Task Scheduler located in
 Control Panel > Administrative Tools > Task Scheduler
 
 Select the Action tab > Create Basic Task option to create a task that can execute every day.
-Don’t forget to change the settings.ini autoclose to 1 so the program can close upon completion!
 
 ## HOW IT WORKS
 

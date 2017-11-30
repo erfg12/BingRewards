@@ -336,6 +336,7 @@ namespace bingRewards
                 webBrowser1.Document.GetElementById("loginfmt").InnerText = username;
                 AutoItX.ControlSend("Bing Rewards Search Bot", "", "", "{ENTER}", 0);
                 await PutTaskDelay2();
+                password = password.Replace("!", "{!}");
                 AutoItX.ControlSend("Bing Rewards Search Bot", "", "", password + "{Enter}", 0);
                 return;
             }
